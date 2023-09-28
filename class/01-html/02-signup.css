@@ -1,0 +1,80 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg_signup {
+    width: 670px;
+    height: 960px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #AACDFF;
+    border-radius: 20px;
+    box-shadow: 7px 7px 39px rgba(0, 104, 255, 0.25);
+}
+
+.group5 {
+    width: 470px;
+    height: 818px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+h1 {
+    color: #0068FF;
+    font-size: 32px;
+    font-family: Noto Sans CJK KR;
+    padding-bottom: 30px;
+}
+
+.group2 {
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px solid #CFCFCF;
+}
+
+#box_email {
+    border-bottom: 1px solid #0068FF;
+}
+
+.inp_txt{
+    word-wrap: break-word;
+}
+
+#gender {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rdo_gender {
+    width: 70px;
+}
+
+#just_line {
+    width: 100%;
+    height: 20px;
+    border-bottom: 1px solid #CFCFCF;
+}
+
+#just_line {
+    width: 100%;
+    height: 20px;
+}
+
+#btn_signup {
+    width: 100%;
+    height: 75px;
+    background: white;
+    border: 1px solid #0068FF;
+    border-radius: 10px;
+    color: #0068FF;
+}

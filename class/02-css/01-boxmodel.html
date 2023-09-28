@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Box Model</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        div {
+            width: 80px;
+            height: 80px;
+            border: 1px solid red;
+            padding: 10px;
+
+            display: flex;
+
+            /* flex-direction: row; (디폴트, 가로 방향 정렬) */
+
+            justify-content: center;
+            /* 디폴트 속성값 : flex-start (왼쪽으로 붙기)
+               다른 속성값 : flex-end, space-between, space-evenly, space-around 등 */
+
+            align-items: center;
+
+            padding: 50px;
+        }
+
+        .pb {
+            width: 500px;
+            height: 500px;
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="pb"> 
+        <!-- pb : parent box -->
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>

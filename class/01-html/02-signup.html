@@ -2,25 +2,44 @@
 <html lang="ko">
 <head>
     <title>회원가입</title>
+    <link href="./02-signup.css" rel="stylesheet">
 </head>
 <body>
-    <h1>회원가입</h1>
-    <input type="text" placeholder="이메일을 입력해 주세요."><br><br>
-    <input type="text" placeholder="이름을 입력해 주세요."><br><br>
-    <input type="password" placeholder="비밀번호를 입력해 주세요."><br><br>
-    <input type="password" placeholder="비밀번호를 다시 입력해 주세요."><br><br>
-    <select>
-        <option disabled="true" selected="true">지역을 선택해 주세요.</option>
-        <option>서울</option>
-        <option>대구</option>
-        <option>경기</option>
-    </select>
-    <br><br>
-    <input type="radio" name="gender">여성
-    <input type="radio" name="gender">남성
-    <br><br>
-    <input type="checkbox">이용약관 개인정보 수집 및 활용에 동의합니다.
-    <hr>
-    <button>가입하기</button>
+    <div class="bg_signup">
+        <div class="group5">
+            <div>
+                <h1>회원 가입을 위해<br>정보를 입력 해주세요.</h1>
+            </div>
+            <div class="group2" id="box_email">
+                <input type="text" class="inp_txt" placeholder="* 이메일">
+            </div>
+            <div class="group2">
+                <input type="text" class="inp_txt" placeholder="* 이름">
+            </div>
+            <div class="group2">
+                <input class="pw" class="inp_txt" type="password" placeholder="* 비밀번호">
+            </div>
+            <div class="group2">
+                <input class="pw" class="inp_txt" type="password" placeholder="* 비밀번호 확인">
+            </div>
+            <div id="gender">
+                <div class="rdo_gender">
+                    <input type="radio" name="gender">여성
+                </div>
+                <div class="rdo_gender">
+                    <input type="radio" name="gender">남성
+                </div>
+            </div>
+            <div id="agree">
+                <input type="checkbox">이용약관 개인정보 수집 및 이용, 마케팅 활용 선택에 모두 동의합니다.
+            </div>
+            <div id="just_line"></div>
+            <div id="just_for_line"></div>
+            <div>
+                <button id="btn_signup">가입하기</button>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>
