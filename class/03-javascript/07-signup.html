@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Sign up</title>
+    <script src="./07-signup.js"></script>
+    <style>
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            width: 200px;
+        }
+        button {
+            width: 70px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <input type="text" id="email" oninput="checkValidation()">
+        <input type="text" id="pw1" oninput="checkValidation()">
+        <input type="text" id="pw2" oninput="checkValidation()">
+        <button id="submit" disabled="true">회원가입</button>
+    </div>
+</body>
+</html>
