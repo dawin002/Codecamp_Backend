@@ -152,3 +152,27 @@ iframe {
     height: 100%;
     border: none;
 }
+
+.navigation {
+    width: 62px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;  /* 절대적 위치 지정 */
+    left: 775px;
+    top: 110px;
+}
+
+.navigation__item {
+    width: 60px;
+    height: 30px;
+    background-color: #298eb5;
+    border: 1px solid black;
+    color: white;
+    border-radius: 0px 10px 10px 0px;
+    font-size: 10px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer; /* 커서 올렸을때 텍스트 커서로 안변하게 */
+} 

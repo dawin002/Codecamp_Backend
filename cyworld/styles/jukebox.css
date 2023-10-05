@@ -15,17 +15,16 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
 .wrapper__header {
-    width: 464px;
-    height: 203px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
-.wrapper__title {
+.header__title {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -46,48 +45,45 @@ html, body {
 .divideLine{
     width: 100%;
     border-top: 1px solid gray;
+    margin: 10px 0px;
 }
 
 .albumWrapper {
-    width: 100%;
-    height: 100%;
-    padding: 20px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
-.albumBox {
-    width: 120px;
-    height: 158px;
+.albumWrapper__item {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
-.albumImg {
+.album-thumbnail {
     width: 120px;
     height: 120px;
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 10px;
 }
 
 .album-songtitle {
     font-size: 11px;
-    font-weight: 700;
+    font-weight: bold;
     color: #0F465E;
-    margin-top: 9px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .album-artist {
     font-size: 10px;
     font-weight: 700;
-    color: #999999;
+    color: gray;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .wrapper__body {
@@ -96,8 +92,9 @@ html, body {
 
 .albumTable {
     width: 100%;
-    border-spacing: 0px;
     padding-top: 8px;
+    /* table의 모든 선 없애기 */
+    border-spacing: 0px;
 }
 
 .albumTable th {

@@ -4,6 +4,7 @@
     <title>정다윈님의 미니홈피 :: 사이좋은 사람들, 싸이월드</title>
     <link href="./styles/index.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/92d730e660.js" crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
 </head>
 <body>
     <div class="background">
@@ -66,9 +67,15 @@
                         </div>
                     </div>
                     <div class="wrapper__right__body">
+                        
+                        <iframe id="contentFrame" src="./home.html"></iframe>
                         <!-- iframe 태그 : 이 태그 안쪽의 화면을 다른 html 파일로 표현할 수 있게 하는 태그 -->
-                        <iframe src="./jukebox.html"></iframe>
                     </div>
+                </div>
+                <div class="navigation">
+                    <div class="navigation__item" id="menuHome" onclick="menuHome()" style = "color:black; background-color: white;">홈</div>
+                    <div class="navigation__item" id="menuJukebox" onclick="menuJukebox()">쥬크박스</div>
+                    <div class="navigation__item" id="menuGame" onclick="menuGame()">게임</div>
                 </div>
             </div>
         </div>
