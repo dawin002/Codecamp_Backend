@@ -13,9 +13,9 @@
 let msgContainer = document.querySelector("#d-day-message");
 let container = document.querySelector("#d-day-container");
 
-// ****************< 주석 풀기 >******************
-// container.style.display = 'none';
-// *********************************************
+container.style.display = 'none';
+
+const intervalIdArr = [];
 
 // textContent : 태그의 텍스트 콘텐츠만 다루는 속성
 // msgContainer.textContent = 'D-Day를 입력해주세요.';
@@ -53,27 +53,56 @@ const counterMaker = () => {
     // 수도코드
     if(remaining <= 0) {
         console.log("타이머가 종료되었습니다.");
+        container.style.display = 'none';
         msgContainer.innerHTML = "<h3>타이머가 종료되었습니다.</h3>";
+        msgContainer.style.display = 'flex';
+        setClearInterval();
+        // if문 아래의 시간 계산 코드가 작동하지 않게 하기 위한 리턴 함수 종료
+        return;
     } else if (isNaN(remaining)) {
         // 만약, 잘못된 날짜가 들어왔다면 유효한 시간대가 아님 출력.
         console.log("유효한 시간대가 아닙니다.");
+        container.style.display = 'none';
         msgContainer.innerHTML = "<h3>유효한 시간대가 아닙니다.</h3>";
+        msgContainer.style.display = 'flex';
+        setClearInterval();
+        // else if문 아래의 시간 계산 코드가 작동하지 않게 하기 위한 리턴 함수 종료
+        return;
     }
 
-    let remainSec = Math.floor(remaining) % 60;
-    let remainMin = Math.floor(remaining / 60) % 60;
-    let remainHour = Math.floor(remaining / 60 / 60) % 24;
-    let remainDate = Math.floor(remaining / 60 / 60 / 24);
+    const remainObj = {
+        remainDate: Math.floor(remaining / 60 / 60 / 24),
+        remainHour: Math.floor(remaining / 60 / 60) % 24,
+        remainMin: Math.floor(remaining / 60) % 60,
+        remainSec: Math.floor(remaining) % 60,
+    };
 
-    let days = document.querySelector("#days");
-    let hours = document.querySelector("#hours");
-    let min = document.querySelector("#min");
-    let sec = document.querySelector("#sec");
+    
+    const documentArr = ['days', 'hours', 'min', 'sec'];
+    const timeKeys = Object.keys(remainObj);
 
-    days.textContent = remainDate;
-    hours.textContent = remainHour;
-    min.textContent = remainMin;
-    sec.textContent = remainSec;
+    let i = 0;
+    for(let tag of documentArr) {
+        document.getElementById(tag).textContent = remainObj[timeKeys[i]];
+        i++;
+    }
+    
+};
 
-    console.log(remainDate, remainHour, remainMin, remainSec)
-}
+
+const starter = function() {
+    container.style.display = 'flex';
+    msgContainer.style.display = 'none';
+    counterMaker();
+    const intervalId = setInterval(counterMaker, 1000);
+    intervalIdArr.push(intervalId);
+    console.log(intervalIdArr);
+};
+
+const setClearInterval = function() {
+    for(let intervalId of intervalIdArr) {
+        clearInterval(intervalId);
+    }
+    container.style.display = 'none';
+    msgContainer.style.display = 'flex';
+};
