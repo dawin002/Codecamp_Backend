@@ -24,27 +24,21 @@ const intervalIdArr = [];
 msgContainer.innerHTML = "<h3>D-Day를 입력해주세요.</h3>";
 
 
-const dateForMarker = () => {
+const dateFormMarker = () => {
     let inputYear = document.querySelector("#target-year-input").value;
     let inputMonth = document.querySelector("#target-month-input").value;
     let inputDate = document.querySelector("#target-date-input").value;
 
-    // 문자열 연산자 활용해 문자열 생성
-    // let dateFormat = inputYear + '-' + inputMonth + '-' + inputDate;
-
     // 템플릿 리터럴 방식으로 문자열 생성
-    let dateFormat = `${inputYear}-${inputMonth}-${inputDate}`;
+    let targetDateInput = `${inputYear}-${inputMonth}-${inputDate}`;
 
-    return dateFormat;
+    return targetDateInput;
 };
 
-const counterMaker = () => {
-    // 입력된 날짜 데이터 받아오기
-    let dateFormat = dateForMarker();
-
+const counterMaker = (targetDateInput) => {
     // 날짜 객체 생성
     let nowDate = new Date();
-    let targetDate = new Date(dateFormat).setHours(0, 0, 0, 0); // setHours()로 자정을 기준 시각으로 지정
+    let targetDate = new Date(targetDateInput).setHours(0, 0, 0, 0); // setHours()로 자정을 기준 시각으로 지정
     
     // 날짜의 차이 (초단위)
     let remaining = (targetDate - nowDate) / 1000;
@@ -52,7 +46,6 @@ const counterMaker = () => {
     // 만약, 남은 시간이 0이면 타이머 종료 출력
     // 수도코드
     if(remaining <= 0) {
-        console.log("타이머가 종료되었습니다.");
         container.style.display = 'none';
         msgContainer.innerHTML = "<h3>타이머가 종료되었습니다.</h3>";
         msgContainer.style.display = 'flex';
@@ -61,7 +54,6 @@ const counterMaker = () => {
         return;
     } else if (isNaN(remaining)) {
         // 만약, 잘못된 날짜가 들어왔다면 유효한 시간대가 아님 출력.
-        console.log("유효한 시간대가 아닙니다.");
         container.style.display = 'none';
         msgContainer.innerHTML = "<h3>유효한 시간대가 아닙니다.</h3>";
         msgContainer.style.display = 'flex';
@@ -77,7 +69,6 @@ const counterMaker = () => {
         remainSec: Math.floor(remaining) % 60,
     };
 
-    
     const documentArr = ['days', 'hours', 'min', 'sec'];
     const timeKeys = Object.keys(remainObj);
 
@@ -91,18 +82,26 @@ const counterMaker = () => {
 
 
 const starter = function() {
+    // 입력된 날짜 데이터 받아오기
+    let targetDateInput = dateFormMarker();
     container.style.display = 'flex';
     msgContainer.style.display = 'none';
-    counterMaker();
-    const intervalId = setInterval(counterMaker, 1000);
+    counterMaker(targetDateInput);
+    const intervalId = setInterval(() => {
+        counterMaker(targetDateInput);
+    }, 1000);
     intervalIdArr.push(intervalId);
-    console.log(intervalIdArr);
 };
 
 const setClearInterval = function() {
     for(let intervalId of intervalIdArr) {
         clearInterval(intervalId);
     }
-    container.style.display = 'none';
-    msgContainer.style.display = 'flex';
 };
+
+const resetTimer = function() {
+    container.style.display = 'none';
+    msgContainer.innerHTML = "<h3>D-Day를 입력해주세요.</h3>";
+    msgContainer.style.display = 'flex';
+    setClearInterval();
+}
