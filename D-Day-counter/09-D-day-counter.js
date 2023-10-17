@@ -10,19 +10,20 @@
 //          - defer 속성이 script 파일을 읽는 동시에 하단의 html 코드를 읽게 해줌
 
 
-let msgContainer = document.querySelector("#d-day-message");
-let container = document.querySelector("#d-day-container");
-
+const msgContainer = document.querySelector("#d-day-message");
+const container = document.querySelector("#d-day-container");
 container.style.display = 'none';
 
 const intervalIdArr = [];
 
-// textContent : 태그의 텍스트 콘텐츠만 다루는 속성
+// 로컬 스토리지에 저장된 데이터(키값:'saved-date') 불러오기
+let savedDate = localStorage.getItem('saved-date');
+
 // msgContainer.textContent = 'D-Day를 입력해주세요.';
+// textContent : 태그의 텍스트 콘텐츠만 다루는 속성
 
-// innerHTML : 태그 내부에 들어갈 HTML 코드자체를 다룰 수 있는 속성
 msgContainer.innerHTML = "<h3>D-Day를 입력해주세요.</h3>";
-
+// innerHTML : 태그 내부에 들어갈 HTML 코드자체를 다룰 수 있는 속성
 
 const dateFormMarker = () => {
     let inputYear = document.querySelector("#target-year-input").value;
@@ -35,10 +36,17 @@ const dateFormMarker = () => {
     return targetDateInput;
 };
 
-const counterMaker = (targetDateInput) => {
+const counterMaker = (data) => {
+
+    // 로컬 스토리지에 날짜 저장
+    if (data !== savedDate) {
+        localStorage.setItem('saved-date', data);
+        savedDate = data;
+    }
+
     // 날짜 객체 생성
     let nowDate = new Date();
-    let targetDate = new Date(targetDateInput).setHours(0, 0, 0, 0); // setHours()로 자정을 기준 시각으로 지정
+    let targetDate = new Date(data).setHours(0, 0, 0, 0); // setHours()로 자정을 기준 시각으로 지정
     
     // 날짜의 차이 (초단위)
     let remaining = (targetDate - nowDate) / 1000;
@@ -72,36 +80,72 @@ const counterMaker = (targetDateInput) => {
     const documentArr = ['days', 'hours', 'min', 'sec'];
     const timeKeys = Object.keys(remainObj);
 
+    const format = function(time) {
+        if(time < 10) {
+            return '0' + time;
+        } else {
+            return time;
+        }
+    }
+
     let i = 0;
     for(let tag of documentArr) {
-        document.getElementById(tag).textContent = remainObj[timeKeys[i]];
+        const remainingTime = format(remainObj[timeKeys[i]]);
+        document.getElementById(tag).textContent = remainingTime;
         i++;
     }
     
 };
 
 
-const starter = function() {
-    // 입력된 날짜 데이터 받아오기
-    let targetDateInput = dateFormMarker();
+const starter = function(targetDateInput) {
+
+    if(!targetDateInput) {
+        targetDateInput = dateFormMarker();
+    }
+
+    // 화면 표시 문구 css 설정
     container.style.display = 'flex';
     msgContainer.style.display = 'none';
-    counterMaker(targetDateInput);
+
+    // 한 번에 하나의 인터벌(반복)만 존재하게
+    setClearInterval();
+
+    // 화면에 d-day 표시
+    counterMaker(targetDateInput);  // 1초 미만일 때 1회 실행
+    // 1000ms 간격으로 반복
     const intervalId = setInterval(() => {
         counterMaker(targetDateInput);
     }, 1000);
+
+    // 초기화를 위한 인터벌 id 저장
     intervalIdArr.push(intervalId);
 };
 
+// 모든 인터벌 삭제 함수
 const setClearInterval = function() {
     for(let intervalId of intervalIdArr) {
         clearInterval(intervalId);
     }
+    // 로컬 스토리지에 저장된 saved-date 항목 삭제 
+    // (잘못된 시간 입력됐을 때도 삭제해주기 위해 setClearInterval 내에 작성)
+    localStorage.removeItem('saved-date');
 };
 
+// 타이머 초기화 함수
 const resetTimer = function() {
+    // 문구 수정
     container.style.display = 'none';
     msgContainer.innerHTML = "<h3>D-Day를 입력해주세요.</h3>";
     msgContainer.style.display = 'flex';
+
     setClearInterval();
 }
+
+if (savedDate) {
+    starter(savedDate);
+} else {
+    container.style.display = 'none';
+    msgContainer.style.display = 'flex';
+    msgContainer.innerHTML = "<h3>D-Day를 입력해주세요.</h3>";
+} 
