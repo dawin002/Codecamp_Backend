@@ -34,7 +34,7 @@ for(let a in person) {
 
 // for-of 는 배열의 요소를 하나씩 받아와서 반복
 // 사용법은 for-in과 동일
-// 파이썬의 for in 문과 동일하게 동작
+// 파이썬의 for in 문, 자바의 forEach 문과 동일하게 동작
 
 arr = ['a', 'b', 'c', 'd', 'e'];
 
