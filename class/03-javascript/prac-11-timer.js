@@ -9,7 +9,7 @@
 
 setTimeout(function(){
     console.log('펑!')
-},3000)
+}, 3000)
 // VM513:2 펑! (3초 있다 출력)
 
 
@@ -17,7 +17,9 @@ setTimeout(function(){
 // 시간반복함수
 // setInterval(func, time);
 
-setInterval(function(){console.log('1초가 지났다')},1000)
+setInterval(function(){
+    console.log('1초가 지났다')
+}, 1000)
 // 5VM653:1 1초가 지났다 (1초 마다 출력)
 
 
@@ -29,7 +31,7 @@ setInterval(function() {
         console.log(time);
         time -= 1;
     }
-},1000);
+}, 1000);
 // VM957:6 5
 // VM957:6 4
 // VM957:6 3
