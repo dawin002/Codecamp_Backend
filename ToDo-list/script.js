@@ -4,14 +4,6 @@ const todoList = document.querySelector("#todo-list");
 // 로컬 스토리지에서 saveItems 불러와 JSON 타입에서 원본 타입으로 되돌리기
 const savedTodoList = JSON.parse(localStorage.getItem('save-items'));
 
-// 로컬 스토리지에 저장된 값이 있다면
-if (savedTodoList) {
-    // 각 데이터로 todo 추가 함수 호출
-    for (let i = 0; i < savedTodoList.length; i ++) {
-        createTodo(savedTodoList[i]);
-    }
-}
-
 // todo 하나 추가하는 함수
 const createTodo = function (storageData) {
     // todo 내용 input에서 가져오기
@@ -42,6 +34,17 @@ const createTodo = function (storageData) {
         // 삭제될 때마다 로컬 스토리지 저장
         saveItemsFunc();
     });
+
+    // 매개변수가 있고, 매개변수의 complete 값이 true 인 경우
+    if (storageData?.complete) {
+        // complete 라는 클래스 속성 추가
+        newLi.classList.add('complete');
+    }
+    // 조건식 안 객채 뒤의 '?'
+    //    : optional chaining
+    //      객체가 undefined 이거나 null 이면 뒤쪽 코드 실행 안함
+    //      if (storageData && storageData.complete) 조건식과 같음
+    //      storageData 가 존재할 때만 .complete 실행
     
     newSpan.textContent = todoContents;
     newLi.appendChild(newBtn);
@@ -84,6 +87,64 @@ const saveItemsFunc = function () {
     // JSON : 텍스트형 데이터 포맷 (객체나 데이터를 문자열로 바꿀 수 있음)
     // console.log(JSON.stringify(saveItems))
 
-    // 로컬 스토리지에 JSON 형식으로 saveItems 배열 저장
-    localStorage.setItem('save-items', JSON.stringify(saveItems));
+    // 배열이 비어있을 때는 로컬 스토리지에서 데이터 삭제(불필요한 데이터 삭제)
+    if (saveItems.length === 0) {
+        localStorage.removeItem('save-items');
+    } else {
+        // 로컬 스토리지에 JSON 형식으로 saveItems 배열 저장
+        localStorage.setItem('save-items', JSON.stringify(saveItems));
+    }
+
+    // 바로 위 코드 3항 연산자로 대체 가능
+    // saveItems.length === 0 
+    //     ? localStorage.removeItem('save-items') 
+    //     : localStorage.setItem('save-items', JSON.stringify(saveItems));
 };
+
+// 로컬 스토리지에 저장된 값이 있다면
+if (savedTodoList) {
+    // 각 데이터로 todo 추가 함수 호출
+    for (let i = 0; i < savedTodoList.length; i ++) {
+        createTodo(savedTodoList[i]);
+    }
+}
+// 이 코드가 가장 아래에 내려와야 하는 이유
+// : createTodo() 함수가 정의된 후에 호출되어야 하기 때문
+
+
+/* Web Weather Map API 사용해 날씨 정보 가져오기 */
+
+const weatherSearch = function(positioin) {
+    let key = '3b27ee52a6e2c2453328d0db9f28269c';
+    const openWeatherRes = fetch(
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${positioin.latitude}&lon=${positioin.longitude}&appid=${key}`
+    );
+    console.log(openWeatherRes);
+}
+
+
+/* Geolocation API 사용해 위치 정보 가져오기 */
+
+// 위치 접근에 성공했을 때 실행되는 함수
+const accessToGeo = function(position) {
+    // 매개변수 position 에 현재 위치 정보가 담김
+
+    // 위치 정보를 담는 객체
+    const positionOBJ = {
+        latitude: position.coords.latitude,     // 위도
+        longitude: position.coords.longitude,   // 경도
+    }
+
+    weatherSearch(positionOBJ);
+}
+
+// 위치 접근에 실패했을 때 실행되는 함수
+const error1 = function(err) {
+    console.log(err);
+}
+
+const askForLocation = function() {
+    navigator.geolocation.getCurrentPosition(accessToGeo, error1);
+}
+
+askForLocation();
