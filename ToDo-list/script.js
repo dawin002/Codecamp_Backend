@@ -114,12 +114,24 @@ if (savedTodoList) {
 
 /* Web Weather Map API 사용해 날씨 정보 가져오기 */
 
-const weatherSearch = function(positioin) {
+const weatherSearch = function(position) {
     let key = '3b27ee52a6e2c2453328d0db9f28269c';
-    const openWeatherRes = fetch(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${positioin.latitude}&lon=${positioin.longitude}&appid=${key}`
-    );
-    console.log(openWeatherRes);
+    fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=${key}`
+    ) 
+    // then()으로 promise 객체가 fulfilled 상태가 되었을 때 처리해줌
+    .then((res) => {
+        // JSON 타입의 응답을 원래의 데이터 타입으로 변환해서 반환
+        // 헤더가 존재하는 응답이라 json() 사용
+        return res.json();  // json()이 promise 객체 반환
+    }) 
+    // 한번 더 then()으로 res.json()의 변환 작업이 완료되는 것을 기다렸다가 처리
+    .then((json) => {
+        console.log(json.name, json.weather[0].description);
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 }
 
 

@@ -9,10 +9,11 @@
 //      A 작업이 시작되었다면 B 작업도 시작될 수 있는 것
 
 // JavaScript
-//      기본적으로 동기적으로 동작
-//      비동기 작업도 가능함
+//      싱글 스레드이기 때문에 기본적으로 동기적으로 동작
+//      비동기 함수를 사용하면 비동기 작업도 가능함
 
 //      비동기 작업 예시
+
 setTimeout(() => {
     console.log('456');
 }, 1000)
@@ -24,6 +25,8 @@ console.log('123');
 
 //      123이 먼저 출력되고 456이 1초 뒤에 출력됨
 
+//      비동기 작업 가능 이유
+//      : call stack 과 callback queue 를 이용해 작업을 차리하기 때문
 
 //  call stack
 
@@ -34,6 +37,7 @@ console.log('123');
 //      stack이 완전히 비워져야 다음 함수의 작업이 stack에 쌓임
 
 //      실행 예시
+
 const func3 = function () {
     console.log("func3 call")
 }
