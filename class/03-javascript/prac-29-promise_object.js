@@ -38,7 +38,7 @@ const promiseTest_fulfilled = function() {
     });
 };
 
-// console.log(promiseTest_fulfilled());  
+console.log(promiseTest_fulfilled());  
 // 결과: Promise {<fulfilled>: 100}
 
 
@@ -54,7 +54,7 @@ const promiseTest_pending = function() {
     });
 };
 
-// console.log(promiseTest_pending());  
+console.log(promiseTest_pending());  
 // 결과: Promise {<pending>}
 
 
@@ -67,7 +67,7 @@ const promiseTest_rejected = function() {
     });
 }
 
-// console.log(promiseTest_rejected());  
+console.log(promiseTest_rejected());  
 // 결과: Promise {<rejected>: 'my error'}
 //      Uncaught (in promise) my error
 
@@ -87,9 +87,9 @@ const promiseTest_then = function() {
     });
 };
 
-// promiseTest_then().then((response) => {
-//     console.log(response);  // 결과: 100 (2초 지연되었다가 출력됨)
-// });
+promiseTest_then().then((response) => {
+    console.log(response);  // 결과: 100 (2초 지연되었다가 출력됨)
+});
 
 
 // catch() 함수 테스트

@@ -56,7 +56,8 @@ const createTodo = function (storageData) {
 
 // 엔터키 눌림 감지 함수
 const keyCodeCheck = function () {
-    if (window.event.keyCode === 13 && todoInput.value) {
+    // trim() : 문자열 양쪽의 공백을 제거하는 메서드
+    if (window.event.keyCode === 13 && todoInput.value.trim()) {
         createTodo();
     }
 };
