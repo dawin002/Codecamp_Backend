@@ -115,10 +115,11 @@ if (savedTodoList) {
 
 /* Web Weather Map API 사용해 날씨 정보 가져오기 */
 
-const weatherSearch = function(position) {
+const weatherSearch = function({latitude, longitude}) {
+    // 전달받는 위치 정보 객체를 구조분해할당해 사용
     let key = '3b27ee52a6e2c2453328d0db9f28269c';
     fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=${key}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`
     ) 
     // then()으로 promise 객체가 fulfilled 상태가 되었을 때 처리해줌
     .then((res) => {
@@ -128,36 +129,39 @@ const weatherSearch = function(position) {
     }) 
     // 한번 더 then()으로 res.json()의 변환 작업이 완료되는 것을 기다렸다가 처리
     .then((json) => {
-        console.log(json.name, json.weather[0].description);
+        console.log(json.name, json.weather[0].main);
     })
     .catch((err) => {
         console.error(err);
     });
 }
 
-
 /* Geolocation API 사용해 위치 정보 가져오기 */
 
 // 위치 접근에 성공했을 때 실행되는 함수
-const accessToGeo = function(position) {
-    // 매개변수 position 에 현재 위치 정보가 담김
+const accessToGeo = function({ coords }) {
+    // 매개변수로 받은 현재 위치 객체를 구조분해할당해 coords만 받아옴
+
+    // coords를 구조분해할당 -> latitude, longitude 선언
+    const {latitude, longitude} = coords;
 
     // 위치 정보를 담는 객체
     const positionOBJ = {
-        latitude: position.coords.latitude,     // 위도
-        longitude: position.coords.longitude,   // 경도
-    }
+        // shorthand property로 프로퍼티 초기화 생략
+        latitude,  // 위도
+        longitude, // 경도
+    };
 
     weatherSearch(positionOBJ);
-}
+};
 
 // 위치 접근에 실패했을 때 실행되는 함수
-const error1 = function(err) {
+const err = function(err) {
     console.log(err);
-}
+};
 
 const askForLocation = function() {
-    navigator.geolocation.getCurrentPosition(accessToGeo, error1);
-}
+    navigator.geolocation.getCurrentPosition(accessToGeo, err);
+};
 
 askForLocation();
