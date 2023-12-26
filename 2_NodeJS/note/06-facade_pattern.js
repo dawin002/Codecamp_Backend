@@ -12,7 +12,7 @@
 // 토큰 API
 const TokenAPI = function() {
     // 휴대폰 번호 검증하기
-    validatePhoneNumber();
+    isValidPhoneNumber();
 
     // 토큰 생성하기
     createToken();
