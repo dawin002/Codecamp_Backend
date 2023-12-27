@@ -8,3 +8,7 @@ Error: EBUSY: resource busy or locked, rmdir 에러
 
 폴더 우클릭 -> 통합 터미널 열기 -> 폴더 삭제 -> 에러 내용 캡처 => 같은 에러 나는지 확인해보기
 해결방법: 아래 터미널에서 터미널 종료(휴지통 아이콘) 후 폴더 조작
+
+
+2. 윈도우에서 yarn 실행시 초기 에러 잡기
+https://theworldaswillandidea.tistory.com/77
