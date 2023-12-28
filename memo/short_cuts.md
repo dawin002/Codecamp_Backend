@@ -1,3 +1,5 @@
+## VSCode
+
 ### 코드 자동 정렬
 - Mac: Shift + option + F
 - Win: Shift + Alt + F
@@ -8,3 +10,9 @@
 ### 이전 탭으로 돌아가기
 - Mac: Cmd + Shift + -
 - Win: Ctrl + Tab
+
+
+## Playground
+
+### 입력 자동 추천
+- Shift + Space
