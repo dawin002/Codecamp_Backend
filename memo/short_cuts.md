@@ -11,8 +11,11 @@
 - Mac: Cmd + Shift + -
 - Win: Ctrl + Tab
 
+### 제안 항목 트리거
+- Mac: Cmd + i
+- Win: Ctrl + Space
 
 ## Playground
 
-### 입력 자동 추천
+### 제안 항목 트리거
 - Shift + Space
