@@ -4,6 +4,14 @@ import { ApolloServer } from '@apollo/server'
 import { startStandaloneServer } from '@apollo/server/standalone'
 
 const typeDefs = `#graphql
+    # 입력 양식 : type 아닌 input 키워드 써야함!!!
+    input CreateBoardInput {
+        writer: String
+        title: String
+        contents: String
+    }
+
+    # 반환 양식
     type MyResult {
         number: Int
         writer: String 
@@ -11,13 +19,19 @@ const typeDefs = `#graphql
         contents: String
     }
 
+    # 쿼리 함수 설명
     type Query {
         # fetchBoards: MyResult # 객체 1개를 의미
         fetchBoards: [MyResult] # 배열 안에 객체 1개 이상을 의미
+        # 반환 타입 MyResult 선언해서 사용하기
     }
 
+    # 뮤테이션 함수 설명
     type Mutation {
-        createBoard: String
+        # createBoard(writer: String, title: String, contents: String): String
+        # 괄호 : args로 들어올 인자 이름과 타입(타입 뒤 느낌표: 필수 입력)
+        createBoard(createBoardInput: CreateBoardInput!): String
+        # 매개변수 타입 CreateBoardInput로 선언해서 사용하기
     }
 `
 
@@ -40,7 +54,9 @@ const resolvers = {
     Mutation: {
         createBoard: (parent, args, context, info) => {
             // 1. 브라우저의 요청 데이터 확인
-            console.log(args.qqq)
+            console.log(args.createBoardInput.writer)
+            console.log(args.createBoardInput.title)
+            console.log(args.createBoardInput.contents)
 
             // 2. DB 접속해 데이터 저장했다고 가정
 
