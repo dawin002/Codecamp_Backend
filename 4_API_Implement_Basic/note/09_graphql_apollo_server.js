@@ -43,11 +43,15 @@
             type Query {
                 board: String
             }
+
+            type Mutation {
+        
+            }
         `
         //      백틱 내 코드는 GraphQL 문법
-        //      type Query {}     : 쿼리 메서드 api 설명
-        //      type Mutations {} : 뮤테이션 메서드 api 설명
-        //      board: String     : endpoint 이름과 반환값
+        //      type Query {}    : 쿼리 메서드 api 설명
+        //      type Mutation {} : 뮤테이션 메서드 api 설명
+        //      board: String    : endpoint 이름과 반환값
 
         //  api 구현
         const resolvers = {
@@ -55,10 +59,14 @@
                 board: () => {
                     return 'This is baord query response.'
                 }
+            },
+
+            Mutation: {
+
             }
         };
         //      Query: {}       : 쿼리 메서드 api 구현
-        //      Mutations: {}   : 뮤테이션 메서드 api 구현
+        //      Mutation: {}    : 뮤테이션 메서드 api 구현
         //      board: () => {} : board 조회 함수 구현
         //      return ...      : 응답 바디
 
