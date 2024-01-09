@@ -82,7 +82,8 @@
 //      1. axios 설치
 //          1) 프로젝트 폴더 통합 터미널에서 열기
 //          2) package.json 생성 : yarn init
-//          3) axios 다운로드 : yarn add axios
+//          3) axios 다운로드
+                yarn add axios
 //          4) 모듈 사용 설정 : package.json 에 "type": "module" 속성 추가
 
 //      2. axios 사용
