@@ -86,6 +86,13 @@
 //          4) 모듈 사용 설정 : package.json 에 "type": "module" 속성 추가
 
 //      2. axios 사용
-            import axios from 'axios'
-
-            axios.get
+//          1) axios 모듈 가져오기
+               import axios from 'axios'
+//          2) axios.get('api 주소') 로 요청 보내기
+               axios.get('http://exampleAPI.com/boards');
+//          3) 요청 전송 코드 앞에 await 키워드 사용해 동기 작업으로 전환하기
+               await axios.get('http://exampleAPI.com/boards');
+//          4) await 코드가 포함된 함수에 async 키워드 사용해 비동기 작업으로 전환하기
+               const getBoards = async () => {
+                await axios.get('http://exampleAPI.com/boards');
+               }
