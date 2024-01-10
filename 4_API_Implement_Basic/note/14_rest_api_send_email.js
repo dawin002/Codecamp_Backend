@@ -19,7 +19,7 @@
 
 //          2) nodemailer 모듈 가져오기
                 import nodemailer from "nodemailer";
-import { sendTemplateToEmail } from "../class/10-rest-api-with-email/backend/email";
+                import { sendTemplateToEmail } from "../class/10-rest-api-with-email/backend/email";
 
 //          3) transporter(전송자) 생성하기
                 const transporter = nodemailer.createTransport({
