@@ -58,4 +58,112 @@
 
 // Docker 이미지 빌드하기
 
+//      1. Docker 빌드하기
+//          1) Dockerfile이 저장된 폴더 통합 터미널에서 열기
+//          2) Docker 빌드 명령어 입력
+                `docker build .`
+//          => 도커 이미지 생성됨
+
+//      2. 빌드한 Docker 이미지 확인
+//          1) 터미널에 도커 이미지 목록 조회 명령어 입력
+                `docker images`
+//          *  도커 이미지 삭제 명령어
+                `docker rmi ${"이미지 아이디"}`
+//          2) 도커 이미지 아이디 확인
+//              가장 최근에 생성된 IMAGE ID 확인
+
 // Docker 이미지 실행하기
+
+//      1. 빌드한 Docker 이미지 실행하기
+//          1) 확인한 이미지 아이디로 도커 이미지 실행하기
+                `docker run ${"이미지 아이디"}`
+
+//      2. 실행중인 컨테이너 확인하기
+//          1) 실행중인 컨테이너 조회 명령어 입력
+                `docker ps`
+//          *  전체 컨테이너 확인 명령어
+                `docker ps -a`
+//          *  컨테이너 삭제 명령어
+                `docker rm ${"컨테이너 아이디"}`
+
+//          2) 컨테이너 아이디 확인
+//              가장 최근에 생성된 CONTAINER ID 확인
+
+// Docker express 서버에 API 요청하기 (안되는데 왜 안되는지가 중요)
+
+//      1. Postman 실행
+
+//      2. app.get('/boards, ...) api 요청하기
+//          1) GET 메서드 선택
+//          2) api 주소 입력
+                `http://localhost:3000/boards`
+
+//      => Could not send request
+//          Error: connect ECONNREFUSED 127.0.0.1:3000 발생
+//          : express는 도커에서 켜져있는데 요청을 받을 api는 내 컴퓨터
+//            (localhost)에서 찾고 있어서
+//          -> 포트 포워딩 해줘야함
+
+//      3. 도커 컨테이너 종료하기
+//          1) 새로운 터미널에서 도커 컨테이너 종료 명령어 입력
+                `docker stop ${"컨테이너 아이디"}`
+
+// Port forwarding 해서 docker 이미지 실행하기
+
+//      포트를 전달해주는 것
+//      도커를 실행시킬 때 포트 포워딩으로 내 컴퓨터에서 도커 컴퓨터로 포트를 전달
+
+//      내 컴퓨터에서 api 요청이 전달되는 포트를 도커 컴퓨터로 연결해주고
+//        도커 컴퓨터 내에서 api를 요청받을 수 있는 포트를 지정해주는 것
+
+//      localhost -> docker 로 가는 포트 번호(2500)와
+//        docker -> express 로 가는 포트 번호(3000)를 다르게 설정할 수 있음
+
+//      1. 현재 docker 내에서 실행중인 express는 3000번 포트로 실행중
+
+//      2. localhost -> docker 로 가는 포트번호 포트 포워딩 해주기
+//          1) docker 이미지 실행 명령어에 포트 포워딩 옵션 추가
+                `docker run -p 2500:3000 ${"이미지 아이디"}`
+//              - -p : 포트 포워딩 옵션
+//              - 2500 : localhost에서 api 요청할 포트번호
+//              - 3000 : express가 api 요청받을 포트번호
+
+//      3. 컨테이너 정보 확인하기
+//          1) 새로운 터미널 열기
+//          2) 컨테이너 정보 조회 명령어 입력
+                `docker ps`
+//          => PORTS 항목에 0.0.0.0:2500->3000/tcp 라고 적혀있음
+//              0.0.0.1 : 누구나
+//              2500->3000 : 2500을 3000으로 포트 포워딩했다
+
+// 포트 포워딩한 Docker express 서버에 API 요청하기
+
+//      1. Postman 실행
+
+//      2. app.get('/boards, ...) api 요청하기
+//          1) GET 메서드 선택
+//          2) api 주소 입력
+                `http://localhost:2500/boards`
+//              - 2500 : 포트 포워딩으로 docker에 연결시킨 포트번호
+
+//      => 게시판 글 목록 조회 응답이 정상적으로 돌아옴
+
+
+// 퀴즈 : localhost -> docker 접속할 때는 2500 포트로, 
+//         docker 안의 express는 4000번 포트로 실행되게 수정하기
+
+//      vscode의 index.js를 3000 -> 4000 으로 수정해도 도커에는 즉시 적용 안됨
+
+//      * docker 접속 명령어
+            `docker exec -it ${"컨테이너 아이디"} /bin/bash`
+//      * 리눅스 파일 열기 명령어
+            `cat ${"파일 이름"}`
+
+//      다시 빌드해야함, 수정한 index.js 파일로 빌드만 하면 될듯?
+//          1) index.js 수정
+//          2) docker 컨테이너 종료
+//          3) docker 컨테이너 삭제
+//          4) docker 이미지 삭제
+//          5) docker 이미지 빌드
+//          6) docker 이미지 실행
+//          7) postman 에서 2500번 포트로 api 요청 전송

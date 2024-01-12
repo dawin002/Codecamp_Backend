@@ -98,5 +98,5 @@ app.post("/users", function(req, res) {
 
 
 
-// 3000번 포트로 대기하기
-app.listen(3000)
+// 3000번 포트로 대기하기 -> 4000번으로 수정
+app.listen(4000)
