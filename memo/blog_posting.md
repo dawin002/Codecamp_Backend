@@ -12,3 +12,24 @@ Error: EBUSY: resource busy or locked, rmdir 에러
 
 2. 윈도우에서 yarn 실행시 초기 에러 잡기
 https://theworldaswillandidea.tistory.com/77
+
+
+3. 안드로이드 스튜디오 기본 프로젝트 폴더 변경
+
+안드로이드 스튜디오에서 기본 프로젝트 폴더를 변경하려면 안드로이드 스튜디오의 설정을 수정해야 합니다. 다음은 Windows 환경에서 C:\Users\Administrator\AndroidStudioProjects 대신 다른 폴더를 기본 프로젝트 폴더로 설정하는 방법입니다:
+
+안드로이드 스튜디오를 열고 대시보드로 이동합니다.
+
+"Configure"를 클릭하고 "Settings" 또는 "Preferences"를 선택합니다.
+
+"Appearance & Behavior" 아래에서 "System Settings"를 선택합니다.
+
+"Project Opening" 섹션에서 "Default directory"를 변경합니다.
+
+"Default directory"를 원하는 새로운 기본 폴더 경로로 변경합니다.
+
+변경된 설정을 저장하려면 "OK" 또는 "Apply" 버튼을 클릭합니다.
+
+이제 안드로이드 스튜디오에서 새로운 프로젝트를 만들 때 지정한 폴더가 기본 폴더로 사용됩니다.
+
+기본 프로젝트 폴더를 변경한 후에는 새로운 프로젝트를 만들 때 해당 폴더가 자동으로 사용됩니다. 이렇게 설정하면 매번 프로젝트를 만들 때마다 기본 경로를 수동으로 변경할 필요가 없습니다.
