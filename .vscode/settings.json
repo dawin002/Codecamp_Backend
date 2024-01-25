@@ -3,6 +3,7 @@
         "WORKDIR"
     ],
     "cSpell.words": [
+        "dbpath",
         "mongosh"
     ]
 }
