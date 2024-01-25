@@ -84,7 +84,17 @@
 //              있으면 정상적으로 연결된 것
 
 
-// MongoDB 설치하며 발생한 에러
+// 윈도우 환경 MongoDB 설치
+
+//      MongoDB, MongoDB shell, MongoDB Compass 설치 하고
+//      root 사용자 생성까지
+
+//      아래 게시물 보고 따라할 것
+//          포시코딩 - MongoDB - Local 설치
+//          https://4sii.tistory.com/54
+
+
+// MongoDB 설치하며 발생한 에러 (Mac)
 
 //      1. brew를 이용한... > 3) mongodb-community ... 에서 발생한 에러
 
@@ -124,4 +134,19 @@
 
 /*
             Warning: openssl@1.1 has been deprecated because it is not supported upstream!
+*/
+
+// MongoDB 설치하며 발생한 에러 (Windows)
+
+/*
+            Service 'MongoDB Server'(MongoDB) failed to start.
+            Verify that you have sufficient privileges to start system services
+
+            MongoDB 설치 후 실행했을 때 발생한 에러
+            구글링 결과 권한 관련 문제로 보임
+
+            https://stackoverflow.com/a/61341751/19418070 를 보고 해결방법을 따라하던 중
+            내가 mongodb를 설치한 외장 ssd의 폴더의 속성에서 보안 탭이 없는걸 보고
+            외장 ssd는 내 pc를 조작할 수 있는 권한을 부여할 수 없는 것 같아서
+            내 pc의 D 드라이브에 재설치하자 문제 해결됨
 */
