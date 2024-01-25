@@ -40,13 +40,13 @@
 //              -> 백엔드에 ORM, ODM 이라는 도구(라이브러리)가 나옴(npm으로 다운로드)
 
 //              ORM
-//                  Object Relation Mapping
+//                  Object-Relational Mapper
 //                  객체를 관계형 데이터베이스로 맵핑시켜주는 라이브러리
-//                  복잡한 관계형 데이터베이스의 쿼리문을 간단한 ORM 명령어로 맵핑해 사용할 수 있음
+//                  테이블로 이루어진 데이터베이스를 다룰 때 사용하는 SQL을 다른 언어에서 쉽게 사용하도록 해줌
 //                  Sequelize, TypeORM, Prisma 등이 있음
 
 //              ODM
-//                  Object Document Mapping
+//                  Object-Document Mapper
 //                  객체를 document 데이터베이스로 맵핑시켜주는 라이브러리
-//                  복잡한 비관계형 데이터베이스의 쿼리문을 간단한 ORM 명령어로 맵핑해 사용할 수 있음
+//                  문서(document)와 collection으로 이루어진 NoSQL 데이터베이스를 다룰 수 있도록 해줌
 //                  Mongoose 등이 있음
