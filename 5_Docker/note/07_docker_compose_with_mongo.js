@@ -119,12 +119,46 @@
 //              docker-compose.yaml이 저장된 폴더의 터미널에서 종료 명령어 입력
                     `docker-compose stop`
 
-// Docker 컴퓨터에서 MongoDB 접속하기
+// Docker 컴퓨터에서 MongoDB 접속하기 (MongoDB Shell)
 
-//      1. Shell을 통한 CLI 접속
+//      Shell을 통한 CLI 접속 방식
 
-//      2. MongoDB Compass를 통한 GUI 접속
+//      1. Docker 컴퓨터 접속하기
+//          1) 새 터미널 열기
+//          2) MongoDB Docker 컨테이너 아이디 확인
+                `docker ps`
+//              backend-my-database-1 가 이름인 컨테이너 ID 확인
+//          3) Docker 컴퓨터 접속하기
+                `docker exec -it (컨테이너 아이디) /bin/bash`
 
-////////////////////////////////////////////////////
-////////////////   22:55부터 듣기   //////////////////
-////////////////////////////////////////////////////
+//      2. MongoDB 사용하기
+//          1) MongoDB Shell 접속 명령어 입력
+                `mongo`
+//          2) DB 목록 조회
+                `show databases;`
+//          3) 특정 DB 사용
+                `use (DB 이름);`
+//          4) collection 목록 조회
+                `show collections;`
+//          5) document 조회
+                `db.(컬렉션 이름).find();`
+//          6) MongoDB Shell 종료
+                `exit;`
+
+//      3. Docker 컴퓨터 빠져나오기
+//          1) Docker shell(터미널) 종료 명령어 입력
+                `exit`
+
+// Docker 컴퓨터에서 MongoDB 접속하기 (MongoDB Compass)
+
+//      MongoDB Compass를 통한 GUI 접속 방식
+
+//      1. MongoDB Compass를 Docker 내부의 MongoDB 서버와 연결
+//          1) 내 컴퓨터의 MongoDB Compass 실행
+//          2) localhost:27017 인 상태로 connect
+//              내 컴퓨터에는 27017 포트번호를 사용하는 MongoDB가 없지만
+//              Docker에서 포트포워딩 해뒀기 때문에 Docker 내부의 MongoDB와 연결됨
+//          -> docker-compose up 한 터미널에 로그가 찍힘
+
+//      2. MongoDB Compass를 사용해 DB 조작하기
+//          GUI 사용하기 때문에 알아서 해볼 것
