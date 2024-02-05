@@ -56,6 +56,14 @@
 
 //          MongoDB Docker 컴퓨터 작업 끝!
 
+//      ** 한 줄짜리 Dockerfile 생략하기
+//          1) Dockerfile.mongo 파일 제거
+//          2) docker-compose.yaml 파일 수정
+                `my-database:` // 에서
+                  `build:` // 부분 모두 지우고
+                  `image: mongo:5` // 로 수정
+//          Dockerfile 내용이 한 줄인 경우에만 사용 가능      
+
 // Docker Compose 사용하기
 
 //      매번 Express, Mongo, ... 를 실행할 Dockerfile들을 따로따로 빌드, 실행, 
