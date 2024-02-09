@@ -75,4 +75,9 @@ MongoDB 종료 후 에러 발생까지의 과정
 5. docker compose with mongoose 에서 발생하는 에러
 
 Run yarn install 에서 실패한다고 나옴
-자세한 내용은 05-08_docker_compose_with_mongoose.js 파일의 에러 발생 부분 참조
+자세한 내용은  5_Docker / note / 08_docker_compose_with_mongoose.js 파일의 에러 발생 부분 참조
+
+6. docker 에서 nodemon 으로 리프레시 안됨
+
+자세한 내용은 5_Docker / note / 10_docker_compose_with_mongoose_board2.js 파일의 "nodemon 리프레시 안되는 문제 해결" 부분 참고
+https://velog.io/@412/Docker%EC%97%90%EC%84%9C-Nodemon-React-CRA%EA%B0%80-%EC%95%88-%EB%8F%BC%EC%9A%94

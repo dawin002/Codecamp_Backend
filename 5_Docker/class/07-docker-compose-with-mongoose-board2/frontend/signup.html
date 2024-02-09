@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>회원가입 연습하기</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const verifyPhone = function() {
+            // 1. 입력한 휴대폰 번호 가져오기
+            const phoneNumber = document.getElementById("phone-number").value;
+            console.log("입력된 휴대폰 번호 : ", phoneNumber);
+
+            // 2. 휴대폰 번호로 인증번호 API 요청하기(fetch, axios 등 사용)
+            axios.post("http://localhost:3000/tokens/phone", {
+                phoneNumber: phoneNumber,
+            }).then((res) => {
+                console.log(res.data);
+                document.getElementById("verify-text").innerText = res.data;
+            });
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <span>휴대폰 번호: </span>
+        <input type="text" id="phone-number">
+        <button onclick="verifyPhone()">인증하기</button>
+    </div>
+    <div id="verify-text">인증 상태</div>
+    <button>회원가입하기</button>
+</body>
+</html>
