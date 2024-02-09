@@ -70,3 +70,9 @@ MongoDB 종료 후 에러 발생까지의 과정
 -> 다시 db.shutdownServer();로 MongoDB 종료 후 재시작하니 똑같은 에러 발생
 -> 다시 컴퓨터 껏다 켜니 정상 동작
 -> shutdown 이후 왜 다시 안켜지는지 나중에 구글링해보기
+
+
+5. docker compose with mongoose 에서 발생하는 에러
+
+Run yarn install 에서 실패한다고 나옴
+자세한 내용은 05-08_docker_compose_with_mongoose.js 파일의 에러 발생 부분 참조

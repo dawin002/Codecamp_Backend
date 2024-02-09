@@ -67,7 +67,7 @@
 //          => 정지된 컨테이너들이 모두 삭제됨
 
 //          * 윈도우는 `` 대신 $() 사용함!
-//              -> docker rm $(docker ps -a -q)
+                `docker rm $(docker ps -a -q)`
 
 //      Docker 사용하지 않는 이미지 아이디 한번에 가져오기
             `docker images -q`
@@ -80,7 +80,7 @@
 //          => 사용하지 않는 이미지들이 모두 삭제됨
 
 //          * 윈도우는 `` 대신 $() 사용함!
-//              -> docker rmi $(docker images -q)
+                `docker rmi $(docker images -q)`
 
 //      Docker 정지된 컨테이너와 이미지 한번에 삭제하기
             `docker system prune -a`

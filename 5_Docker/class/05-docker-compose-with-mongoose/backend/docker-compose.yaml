@@ -14,5 +14,6 @@ services:
   # 컴퓨터 이름(데이터베이스 컴퓨터)
   my-database:
     image: mongo:5
-    ports:
-      - 27017:27017
+    # ports:
+    #   - 27017:27017   =>  몽고DB컴패스에서 접속 안됨,
+    #                   =>  하지만, 네임리졸루션으로 express에서는 접속 가능

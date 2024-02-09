@@ -98,7 +98,7 @@ app.post("/users", function(req, res) {
 })
 
 // Mongoose 와 DB 연결
-mongoose.connect("mongodb://localhost:27017/mydocker")
+mongoose.connect("mongodb://my-database:27017/mydocker")
     .then(() => console.log("db 접속 성공"))
     .catch(() => console.log("db 접속 실패"));
 
