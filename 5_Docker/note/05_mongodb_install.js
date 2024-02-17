@@ -1,5 +1,4 @@
-// Docker MongoDB 연결
-
+// MongoDB
 
 // MongoDB 설치
 
