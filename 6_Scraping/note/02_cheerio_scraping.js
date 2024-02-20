@@ -5,6 +5,11 @@
 
 //          특정 사이트의 정보를 가지고 오는 것
 
+//      스크래핑은 어디에서 하는가?
+//          프론트엔드(브라우저) / 백엔드(백엔드서버, 데이터베이스)
+//          => 보통 백엔드에서 수행. 프론트에서는 cors 문제 발생할 수도 있어서
+//          => 혹은 프론트에서 프록시 서버(임시 백엔드 서버) 만들어서 수행
+
 
 // 오픈 그래프
 
@@ -32,7 +37,28 @@
 //      1. 실습 파일 생성
 //          1) index.js 파일 생성
 
-//      2. 채팅 입력 함수 생성
+//      2. package.json 파일 생성
+//          1) index.js 폴더 통합 터미널 열기
+//          2) package.json 파일 생성
+                `yarn init`
+//              입력창 뜨면 엔터
+//          3) package.json 코드에 type 속성 추가
+                `"type": "module",`
+
+//      3. axios, cheerio 설치
+//          1) axios 설치 명령어 입력
+                `yarn add axios`
+//          2) cheerio 설치 명령어 입력
+                `yarn add cheerio`
+
+//      4. axios, cheerio 가져오기
+//          index.js 파일 제일 위에서 모듈 import 하기
+//          1) axios 가져오기
+                `import axios from 'axios'`
+//          2) cheerio 가져오기
+                `import axios from 'cheerio'`
+
+//      5. 스크래핑 함수 생성
 //          1) 함수 선언
                 `const createMessage = () => { }`
 
@@ -42,7 +68,7 @@
 //              .find() 메서드 등의 알고리즘을 사용해서 추출
 
 //          3) axios 로 Scraping 하기
-//              axios.get()으로 api 요청해 html 코드 받아오기
+//              axios.get()으로 api 요청해 html 데이터 받아오기
 `               const result = await axios.get(url);
                 console.log(result.data);
 `//             - result.data : api 응답 바디
@@ -55,13 +81,32 @@
 //              * cheerio 의 자세한 사용 방법은 공식 문서 참고
 //                https://cheerio.js.org
 
-//              응답 바디에서 html 코드 인식해 저장
-                `const htmlCode = cheerio.load(result.data);`
+//              응답 바디에서 html 데이터 인식해 저장
+                `const $ = cheerio.load(result.data);`
+//              $ : cheerio 공식 문서에서 권장하는 html 데이터 담는 변수명
 
-//              html 코드에서 meta 태그 선택 후 og 가 포함된 속성
-`               htmlCode("meta").each(() => {
-                
+//              html 데이터에서 meta 태그 선택 후 og 가 포함된 속성
+`               $("meta").each((index, element) => {
+                    if ($(el).attr("property")?.includes("og:")) {
+                        const key = $(el).attr("property")
+                        const value = $(el).attr("content")
+                    }
                 })
-`
-//              - htmlCode("meta") : cheerio 사용해 html 에서 meta 코드만 골라내기
+`//             - $("meta") : cheerio 사용해 html 데이터에서 meta 태그 데이터만 골라내기
 //              - each() : 각각의 meta 태그에 대해 반복문 돌림 (cheerio 제공 기능)
+//              - index : 반복문 인덱스
+//              - el : 현재 반복 요소 (element의 약자 , 여기서는 meta 태그 객체)
+
+//              - $(el) : cheerio 객체 $ 의 현재 반복 요소
+//              - .attr("property") : 속성이 "property" 인 요소
+//              - ? : 존재하는지 (null이 아닌지)
+//              - includes("og:") : "og:" 라는 문자열을 포함하고 있는지
+
+//              - $(el).attr("property") : OG 태그 이름
+//              - $(el).attr("content") : OG 태그 내용
+
+//      6. 스크래핑 함수 테스트 
+//          1) 스크래핑 함수 호출
+                `createMessage()`
+//          2) index.js 파일 실행
+                `node index.js`
