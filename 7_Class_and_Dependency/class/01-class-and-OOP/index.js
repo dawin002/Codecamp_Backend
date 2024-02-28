@@ -48,14 +48,14 @@ class Monster {
 
 // 객체 생성 및 사용
 
-const myMonster1 = new Monster(20)
+const myMonster1 = new Monster(20)  // 공격력 20으로 초기화한 객체
 myMonster1.attack()
 myMonster1.run()
 
-const myMonster2 = new Monster(50)
+const myMonster2 = new Monster(50)  // 공격력 50으로 초기화한 객체
 myMonster2.attack()
 myMonster2.run()
 
-const myMonster3 = new Monster()
+const myMonster3 = new Monster()    // 공격력 초기화하지 않은 객체
 myMonster3.attack()
 myMonster3.run()
