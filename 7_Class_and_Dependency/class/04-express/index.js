@@ -1,15 +1,46 @@
-// express 사용해 api 만들기
+import express from 'express'
 
-// express 적용
-// const express = require('express') // 예전 방식 : common js
-import express from 'express'         // 최신 방식 : module
-
-// 
 const app = express()
 
-// api 만들기
-app.get('/qqq', function (req, res) {
-    res.send('Hello World! My name is Darwin Jung')
+// 상품 구매하기 API
+app.post('/products/buy', (req, res) => {
+
+    // 1. 구매자 계좌 잔고 검증 코드 (대략 10줄 정도)
+    // ...
+    // ...
+    // ...
+    // ...
+
+    // 2. 현재 상품의 판매 여부 검증 코드 (대략 10줄 정도)
+    // ...
+    // ...
+    // ...
+    // ...
+
+    // 3. 상품 구매하는 코드
+    // if(잔고있음 && !판매완료) {
+    //     res.send("상품 구매 완료!!")
+    // }
+
+})
+
+// 상품 환불하기 API
+app.post('/products/refund', (req, res) => {
+
+    // 1. 현재 상품의 판매 여부 검증 코드 (대략 10줄 정도)
+    // ...
+    // ...
+    // ...
+    // ...
+
+    // 2. 상품 환불하는 코드
+    // if(판매완료) {
+    //     res.send("상품 환불 완료")
+    // }
+    
 })
 
 app.listen(3000)
+
+// => "현재 상품의 판매 여부 검증 코드" 가 두 API 함수에 중복으로 들어감
+//      따라서 이 코드를 함수로 선언해 클래스에 넣어 사용하는게 좋아보임
