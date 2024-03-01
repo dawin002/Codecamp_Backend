@@ -60,7 +60,7 @@
 //          1) 설치할 폴더에서 통합 터미널 열기
 //          2) yarn init
 //          3) 엔터엔터...
-//          4) package.json 파일에 "type": "module", 속성 추가
+//          4) package.json 파일에 "type": "module" 속성 추가
 
 //      2. TypeScript 모듈 설치
 //          1) 터미널에 설치 명령어 입력
