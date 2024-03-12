@@ -1,9 +1,6 @@
 {
-    "cSpell.ignoreWords": [
-        "WORKDIR"
-    ],
-    "cSpell.words": [
-        "dbpath",
-        "mongosh"
-    ]
+    "cSpell.ignoreWords": ["WORKDIR"],
+    "cSpell.words": ["dbpath", "mongosh"],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
 }
