@@ -5,6 +5,6 @@ import { AppService } from './app.service';
 @Module({
   imports: [],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService], // index.js 의 new AppController(new AppService);와 같음
 })
 export class AppModule {}
