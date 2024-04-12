@@ -173,7 +173,7 @@
 `               @Query(() => String)
 `//             String 타입으로 반환
 //              반환값이 null일 수 없음
-//              String 첫글자 대문자임 오타주의
+//              String 첫글자 대문자임 오타주의 (GraphQL에서는 첫글자 대문자여서)
 
 `               @Query(() => String, { nullable: true })
 `//             null 반환을 허용하는 String 타입 반환
