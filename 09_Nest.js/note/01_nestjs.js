@@ -16,7 +16,7 @@
 //          OOP, FP(Functional Programming), FRP(Functional Reactive Programming) 요소를 결합
 
 //          큰 규모의 백엔드 프레임워크
-//          DI 프레임워크 : 의존성 주입을 지원하는 프레임워크
+//          * DI 프레임워크 : 의존성 주입을 지원하는 프레임워크
 //          express 프레임워크가 포함됨 (자동 설치)
 
 //          Java       ->  스프링 (DI 프레임워크)
