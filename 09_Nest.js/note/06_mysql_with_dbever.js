@@ -62,6 +62,20 @@
 `//             에러 없이 실행되는지 확인 (mysql 명령어 인식하는 지)
 
 
+// MySQL 켜고 끄기 명령어
+
+//          Windows PowerShell 에서 명령어를 통해 켜고 끌 수 있음
+//           아니면 윈도우 서비스에서 찾아 수동으로 꺼야됨
+
+//          Windows PowerShell 은 관리자 권한으로 실행하기
+
+//          1) MySQL 서비스 시작 명령어
+`               net start mysql
+`
+//          2) MySQL 서비스 종료 명령어
+`               net stop mysql
+`
+
 // DBeaver (DB 관리 툴) 설치
 
 //          DBeaver는 설치 드라이브 선택 가능해서 installer 다운받아 설치하면 됨

@@ -9,10 +9,8 @@ Error: EBUSY: resource busy or locked, rmdir 에러
 폴더 우클릭 -> 통합 터미널 열기 -> 폴더 삭제 -> 에러 내용 캡처 => 같은 에러 나는지 확인해보기
 해결방법: 아래 터미널에서 터미널 종료(휴지통 아이콘) 후 폴더 조작
 
-
 2. 윈도우에서 yarn 실행시 초기 에러 잡기
-https://theworldaswillandidea.tistory.com/77
-
+   https://theworldaswillandidea.tistory.com/77
 
 3. 안드로이드 스튜디오 기본 프로젝트 폴더 변경
 
@@ -37,47 +35,100 @@ https://theworldaswillandidea.tistory.com/77
 4. 윈도우에서 MongoDB 종료시 재시작 안되는 에러
 
 MongoDB 종료 후 에러 발생까지의 과정
-- 윈도우 파워쉘에서 mongod 명령어로 MongoDB 실행
-- mongosh 명령어로 MongoDB Shell 실행
-- use admin 명령어로 admin db로 변경
-- db.shutdownServer(); 명령어로 MongoDB 종료
-- exit 명령어로 MongoDB shell 종료
-- 이후 mongosh 로 MongoDB가 종료되어 실행 안되는 것 확인
-- 근데 여기서 mongod 로 MongoDB를 실행하고 mongosh 로 MongoDB Shell 을 열었으나 connection error? 이런 에러 뜸 나중에 다시 테스트
+
+-   윈도우 파워쉘에서 mongod 명령어로 MongoDB 실행
+-   mongosh 명령어로 MongoDB Shell 실행
+-   use admin 명령어로 admin db로 변경
+-   db.shutdownServer(); 명령어로 MongoDB 종료
+-   exit 명령어로 MongoDB shell 종료
+-   이후 mongosh 로 MongoDB가 종료되어 실행 안되는 것 확인
+-   근데 여기서 mongod 로 MongoDB를 실행하고 mongosh 로 MongoDB Shell 을 열었으나 connection error? 이런 에러 뜸 나중에 다시 테스트
 
 시도한 방법들
 
-- mongod.lock 파일 삭제
--> MongoDB가 비정상 종료되었을 경우 이를 해결하는 작업을 다음 MongoDB 실행때 수행하는데 수행할 작업을 mongod.lock에 적어둔다고 함
--> 이 작업 자체가 잘못 적혀있거나 수행되며 에러가 발생할 수도 있어서 lock 파일을 지우면 해결될 수도 있다고 함
--> 지웠으나 동일한 에러 발생
+-   mongod.lock 파일 삭제
+    -> MongoDB가 비정상 종료되었을 경우 이를 해결하는 작업을 다음 MongoDB 실행때 수행하는데 수행할 작업을 mongod.lock에 적어둔다고 함
+    -> 이 작업 자체가 잘못 적혀있거나 수행되며 에러가 발생할 수도 있어서 lock 파일을 지우면 해결될 수도 있다고 함
+    -> 지웠으나 동일한 에러 발생
 
-- 작업관리자 - 서비스에서 MongoDB 상태 확인하기
--> 상태 정지 로 되어있음
--> 우클릭해서 시작 눌러도 잠깐 바뀌었다가 다시 정지됨
--> 서비스 속성에서는 사용/사용안함/자동 중 자동으로 되어있음
--> 서비스 시작 눌러도 시작 안되고 에러 뜸
+-   작업관리자 - 서비스에서 MongoDB 상태 확인하기
+    -> 상태 정지 로 되어있음
+    -> 우클릭해서 시작 눌러도 잠깐 바뀌었다가 다시 정지됨
+    -> 서비스 속성에서는 사용/사용안함/자동 중 자동으로 되어있음
+    -> 서비스 시작 눌러도 시작 안되고 에러 뜸
 
-- mongod --dbpath D:Apps/MongoDB/.../data 명령어 실행
--> 위 명령어 입력한 powershell에서는 더이상 입력 안됨
--> 다른 탭에서 mongosh 정상 작동
--> mongod --dbpath ... 입력한 파워쉘의 작업을 ^C로 끝내거나 탭을 닫으면 MongoDB 서버도 닫힘
--> mongod 실행한 파워쉘 닫은 후에는 mongosh 나 MongoDB Compass 둘 다 connection 실패
+-   mongod --dbpath D:Apps/MongoDB/.../data 명령어 실행
+    -> 위 명령어 입력한 powershell에서는 더이상 입력 안됨
+    -> 다른 탭에서 mongosh 정상 작동
+    -> mongod --dbpath ... 입력한 파워쉘의 작업을 ^C로 끝내거나 탭을 닫으면 MongoDB 서버도 닫힘
+    -> mongod 실행한 파워쉘 닫은 후에는 mongosh 나 MongoDB Compass 둘 다 connection 실패
 
-- 컴퓨터 다시시작 하기
--> 컴퓨터 재시작 후 파워쉘에서 mongod, mongosh 명령어 수행
--> 정상 작동함(???)
--> 다시 db.shutdownServer();로 MongoDB 종료 후 재시작하니 똑같은 에러 발생
--> 다시 컴퓨터 껏다 켜니 정상 동작
--> shutdown 이후 왜 다시 안켜지는지 나중에 구글링해보기
-
+-   컴퓨터 다시시작 하기
+    -> 컴퓨터 재시작 후 파워쉘에서 mongod, mongosh 명령어 수행
+    -> 정상 작동함(???)
+    -> 다시 db.shutdownServer();로 MongoDB 종료 후 재시작하니 똑같은 에러 발생
+    -> 다시 컴퓨터 껏다 켜니 정상 동작
+    -> shutdown 이후 왜 다시 안켜지는지 나중에 구글링해보기
 
 5. docker compose with mongoose 에서 발생하는 에러
 
 Run yarn install 에서 실패한다고 나옴
-자세한 내용은  5_Docker / note / 08_docker_compose_with_mongoose.js 파일의 에러 발생 부분 참조
+자세한 내용은 5_Docker / note / 08_docker_compose_with_mongoose.js 파일의 에러 발생 부분 참조
 
 6. docker 에서 nodemon 으로 리프레시 안됨
 
 자세한 내용은 5_Docker / note / 10_docker_compose_with_mongoose_board2.js 파일의 "nodemon 리프레시 안되는 문제 해결" 부분 참고
 https://velog.io/@412/Docker%EC%97%90%EC%84%9C-Nodemon-React-CRA%EA%B0%80-%EC%95%88-%EB%8F%BC%EC%9A%94
+
+7. 도커 버전 낮아서 에러 발생
+
+09-09 neset with typeorm api docker 에서 발생한 에러
+
+docker-compose build 했을 때 버전 낮다는 에러 발생
+
+에러 메시지 :
+PS D:\Study\Develop\Codecamp_Backend\09_Nest.js\class\09-nestjs-with-typeorm-api_docker> docker-compose build
+[+] Building 37.3s (9/10) docker:default
+...
+=> ERROR [my-backend 5/6] RUN yarn install
+
+---
+
+> [my-backend 5/6] RUN yarn install:
+> 2.079 yarn install v1.22.19
+> 2.233 [1/4] Resolving packages...
+> 2.485 [2/4] Fetching packages...
+> 28.85 error @angular-devkit/core@17.1.2: The engine "node" is incompatible with this module. Expected version "^18.13.0 || >=20.9.0". Got "16.20.2"
+> 28.86 error Found incompatible module.
+
+## 28.86 info Visit https://yarnpkg.com/en/docs/cli/install for documentation about this command.
+
+failed to solve: process "/bin/sh -c yarn install" did not complete successfully: exit code: 1
+
+Node.js 버전이 호환되지 않는 패키지를 설치하려고 시도했기 때문에 발생
+도커 컨테이너 내의 노드 버전이 낮아서 발생한 듯
+
+에러 메시지를 보면 '@angular-devkit/core' 패키지가 Node.js 버전 "^18.13.0 || >=20.9.0"을 요구하는데, 현재 사용 중인 Node.js 버전이 "16.20.2"이기 때문에 호환되지 않습니다. 라고 나옴
+
+Dockerfile 수정
+
+# 현재 사용 중인 이미지
+
+FROM node:16
+
+# 노드 버전을 업그레이드한 이미지를 사용하려면 다음과 같이 변경합니다.
+
+FROM node:18
+
+에러 해결 완료!
+
+8. 도커 mysql 실행시 DBever 에서 접속 안되는 에러
+
+09-09 neset with typeorm api docker 에서 발생한 에러
+
+DBever 에서 테스트 커넥션? 했을 때
+Public Key Retrieval is not allowed 라는 에러창 뜨고 접속 안됨
+
+해결 방법
+
+https://velog.io/@dailylifecoding/DBeaver-MySQL-connecting-error-Public-Key-Retrieval-is-not-allowed-solved
