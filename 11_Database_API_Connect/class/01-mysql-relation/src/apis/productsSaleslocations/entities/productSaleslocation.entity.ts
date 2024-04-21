@@ -15,7 +15,7 @@ export class ProductSaleslocation {
   lat: number; // 위도
 
   @Column({ type: 'decimal', precision: 9, scale: 6 })
-  lgn: number; // 경도
+  lng: number; // 경도
 
   @Column()
   meetingTime: Date;
