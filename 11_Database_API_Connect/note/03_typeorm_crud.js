@@ -455,7 +455,7 @@
 `//             DB에 저장된 Products가 모두 조회됨
 //              너무 많아서 ... 로 생략
 
-//          3) 게시글 상세 조회
+//          4) 게시글 상세 조회
 
 `               query {
                   fetchProduct(productId: "24213af8-4f71-4abb-906c-0c3743b8a7d0") {
