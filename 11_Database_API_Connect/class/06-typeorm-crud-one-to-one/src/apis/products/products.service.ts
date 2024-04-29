@@ -9,28 +9,52 @@ import {
   IProductsServiceUpdate,
   IProductsSeviceCreate,
 } from './interfaces/products-service.interface';
+import { ProductsSaleslocationsService } from '../productsSaleslocations/productsSaleslocations.service';
 
 @Injectable()
 export class ProductsService {
   constructor(
     @InjectRepository(Product)
     private readonly productsRepository: Repository<Product>, //
+
+    private readonly productsSaleslocationsService: ProductsSaleslocationsService,
   ) {}
 
   findAll(): Promise<Product[]> {
-    return this.productsRepository.find();
+    return this.productsRepository.find({
+      relations: ['productSaleslocation'],
+    });
   }
 
   findOne({ productId }: IProductsServiceFindOne): Promise<Product> {
-    return this.productsRepository.findOne({ where: { id: productId } });
+    return this.productsRepository.findOne({
+      where: { id: productId },
+      relations: ['productSaleslocation'],
+    });
   }
 
-  create({ createProductInput }: IProductsSeviceCreate): Promise<Product> {
-    const result = this.productsRepository.save({
-      ...createProductInput,
+  async create({
+    createProductInput,
+  }: IProductsSeviceCreate): Promise<Product> {
+    // 1. 상품 하나만 등록할 때 사용하는 방법
+    // const result = this.productsRepository.save({
+    //   ...createProductInput,
+    // });
+
+    // 2. 상품과 상품판매위치를 함께 등록하는 방법
+    const { productSaleslocation, ...product } = createProductInput;
+
+    const result = await this.productsSaleslocationsService.create({
+      productSaleslocation,
+    }); // 서비스를 타고 가야 하는 이유는?
+    //  // 레파지토리에 여러 군데에서 직접 접근하면 검증 로직을 통일시킬 수 없기 때문
+
+    const result2 = this.productsRepository.save({
+      ...product,
+      productSaleslocation: result, // result 통째로 넣기 vs id만 넣기
     });
 
-    return result;
+    return result2;
   }
 
   async update({
