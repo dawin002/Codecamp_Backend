@@ -1,5 +1,5 @@
 import { Injectable, UnprocessableEntityException } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { Product } from './entities/product.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import {
@@ -41,14 +41,25 @@ export class ProductsService {
     //   ...createProductInput,
     // });
 
-    // 2. 상품과 상품판매위치를 함께 등록하는 방법
-    const { productSaleslocation, productCategoryId, ...product } =
+    // 2. 상품과 상품판매위치, 태그를 함께 등록하는 방법
+    const { productSaleslocation, productCategoryId, productTags, ...product } =
       createProductInput;
 
+    // 2-1. 상품판매위치 등록
     const result = await this.productsSaleslocationsService.create({
       productSaleslocation,
     }); // 서비스를 타고 가야 하는 이유는?
     //  // 레파지토리에 여러 군데에서 직접 접근하면 검증 로직을 통일시킬 수 없기 때문
+
+    // 2-2. 태그 등록
+    // productTags가 ['#전자제품', '#영등포', '#컴퓨터']와 같은 패턴이라고 가정
+    const tagNames = productTags.map((el) => el.replace('#', ''));
+
+    const prevTags = await this.productsTagsRepository.find({
+      where: { name: In(tagNames) },
+    });
+
+    const newTags = await this.productsTagsRepository.insert([...tagNames]); // bulk-insert는 save()로 불가능
 
     const result2 = this.productsRepository.save({
       ...product,
@@ -58,25 +69,28 @@ export class ProductsService {
         // 만약에 name까지 결과로 돌려주고 싶으면
         // => createProductInput 에 name 까지 포함해서 받아오기
       },
+      productTags: newTags.identifiers,
     });
 
     return result2;
   }
 
+  // create-product.input.ts 수정후 에러 나는 부분 주석 처리, 왜 에러나는지 찾고, 에러 해결해보기
   async update({
     productId,
     updateProductInput,
-  }: IProductsServiceUpdate): Promise<Product> {
+    // }: IProductsServiceUpdate): Promise<Product> {
+  }: IProductsServiceUpdate): Promise<void> {
     const product = await this.findOne({ productId });
 
     this.checkSoldout({ product });
 
-    const result = this.productsRepository.save({
-      ...product,
-      ...updateProductInput,
-    });
+    // const result = this.productsRepository.save({
+    //   ...product,
+    //   ...updateProductInput,
+    // });
 
-    return result;
+    // return result;
   }
 
   checkSoldout({ product }: IProductsServiceCheckSoldout): void {
