@@ -11,5 +11,12 @@
 
 //          2) 상품 카테고리 실습 소스파일 다운로드
 //              강의자료에서 모듈, 리졸버, 서비스 파일 다운로드
-//              https://github.com/code-bootcamp/codecamp-backend-supplement-product-categories
-//              
+//              강의자료/Supplement/Section 29/10-07 링크
+
+//          3) 프로젝트에 적용
+//              기존의 src/apis 의 productCategories 폴더를 지우고
+//              다운로드 받은 productCategories 폴더를 src/apis 에 넣기
+
+//          => 상품 카테고리 폴더에는 등록 API 함수만 구현되어 있음
+
+//      2. 
