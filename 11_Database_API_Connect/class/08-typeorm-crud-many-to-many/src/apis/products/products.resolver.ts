@@ -33,7 +33,8 @@ export class ProductsResolver {
   updateProduct(
     @Args('productId') productId: string, //
     @Args('updateProdcutInput') updateProductInput: UpdateProductInput,
-  ): Promise<Product> {
+    // ): Promise<Product> {} // 상품 수정 서비스 함수 에러난거 고쳐보기 숙제
+  ): Promise<void> {
     return this.productsService.update({ productId, updateProductInput });
   }
 

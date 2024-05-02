@@ -10,14 +10,15 @@ import {
   IProductsSeviceCreate,
 } from './interfaces/products-service.interface';
 import { ProductsSaleslocationsService } from '../productsSaleslocations/productsSaleslocations.service';
+import { ProductsTagsService } from '../productsTags/prodcutsTags.service';
 
 @Injectable()
 export class ProductsService {
   constructor(
     @InjectRepository(Product)
     private readonly productsRepository: Repository<Product>, //
-
     private readonly productsSaleslocationsService: ProductsSaleslocationsService,
+    private readonly productsTagsService: ProductsTagsService,
   ) {}
 
   findAll(): Promise<Product[]> {
@@ -55,11 +56,17 @@ export class ProductsService {
     // productTags가 ['#전자제품', '#영등포', '#컴퓨터']와 같은 패턴이라고 가정
     const tagNames = productTags.map((el) => el.replace('#', ''));
 
-    const prevTags = await this.productsTagsRepository.find({
-      where: { name: In(tagNames) },
+    const prevTags = await this.productsTagsService.findByNames({ tagNames });
+
+    const temp = [];
+    tagNames.forEach((el) => {
+      const isExist = prevTags.find((prevEl) => el === prevEl.name); // prevEl : 기존 태그 하나
+      if (!isExist) temp.push({ name: el }); // el : 인자로 받은 태그 하나
     });
 
-    const newTags = await this.productsTagsRepository.insert([...tagNames]); // bulk-insert는 save()로 불가능
+    const newTags = await this.productsTagsService.bulkInsert({ names: temp }); // bulk-insert는 save()로 불가능
+
+    const tags = [...prevTags, ...newTags.identifiers];
 
     const result2 = this.productsRepository.save({
       ...product,
@@ -69,7 +76,7 @@ export class ProductsService {
         // 만약에 name까지 결과로 돌려주고 싶으면
         // => createProductInput 에 name 까지 포함해서 받아오기
       },
-      productTags: newTags.identifiers,
+      productTags: tags,
     });
 
     return result2;
