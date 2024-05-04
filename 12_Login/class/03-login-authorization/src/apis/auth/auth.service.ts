@@ -1,7 +1,7 @@
 import { Injectable, UnprocessableEntityException } from '@nestjs/common';
 import {
   IAuthServiceLogin,
-  IUsersServiceGetAccessToken,
+  IAuthServiceGetAccessToken,
 } from './interfaces/auth-service.interface';
 import { UsersService } from '../users/users.service';
 import * as bcrypt from 'bcrypt';
@@ -30,10 +30,10 @@ export class AuthService {
     return this.getAccessToken({ user });
   }
 
-  getAccessToken({ user }: IUsersServiceGetAccessToken): string {
+  getAccessToken({ user }: IAuthServiceGetAccessToken): string {
     return this.jwtService.sign(
       { sub: user.id }, //
-      { secret: '나의 비밀번호', expiresIn: '1h' },
+      { secret: '나의비밀번호', expiresIn: '1h' },
     );
   }
 }

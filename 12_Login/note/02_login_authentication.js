@@ -277,7 +277,7 @@
 `               getAccessToken({ user }: IUsersServiceGetAccessToken): string {
                   return this.jwtService.sign(
                     { sub: user.id },                            // 1번 파라미터
-                    { secret: '나의 비밀번호', expiresIn: '1h' }, // 2번 파라미터
+                    { secret: '나의비밀번호', expiresIn: '1h' },  // 2번 파라미터
                   );
                 }
 `//             jwtService.sign(): 서명 함수, 토큰을 만듬

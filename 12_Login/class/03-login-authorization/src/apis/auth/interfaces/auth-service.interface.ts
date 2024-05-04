@@ -5,6 +5,6 @@ export interface IAuthServiceLogin {
   password: string;
 }
 
-export interface IUsersServiceGetAccessToken {
+export interface IAuthServiceGetAccessToken {
   user: User;
 }

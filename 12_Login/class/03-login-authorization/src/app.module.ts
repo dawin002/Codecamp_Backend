@@ -11,11 +11,11 @@ import { AuthModule } from './apis/auth/auth.module';
 
 @Module({
   imports: [
+    AuthModule,
     BoardsModule, //
     ProductsModule,
     ProductsCategoriesModule,
     UsersModule,
-    AuthModule,
     ConfigModule.forRoot(),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,

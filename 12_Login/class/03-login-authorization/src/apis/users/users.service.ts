@@ -26,10 +26,7 @@ export class UsersService {
     age,
   }: IUsersServiceCreate): Promise<User> {
     const user = await this.findOneByEmail({ email });
-    if (user) {
-      console.log(user);
-      throw new ConflictException('이미 등록된 이메일입니다.');
-    }
+    if (user) throw new ConflictException('이미 등록된 이메일입니다.');
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
