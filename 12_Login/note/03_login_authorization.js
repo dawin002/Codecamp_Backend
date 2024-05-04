@@ -301,11 +301,24 @@
 `               {
                   "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5OTg1NzM2ZC1mY2M1LTRjNGUtYWU2OC00MzQ4Y2NhZGUwMjIiLCJpYXQiOjE3MTQ4MzQ2MzAsImV4cCI6MTcxNDgzODIzMH0.XGd3KOXtxqMg4-ll8kBMUjsl4rRn57MEqpNmIiufGKA"
                 }
-`
+`//           * accessToken 앞에 Bearer 안붙이면 에러남;;;;
+//              이거 때문에 두시간 날림;;
+
 //          2) fetchUser() 응답
-`
+`               {
+                  "data": {
+                    "fetchUser": "인가에 성공했습니다."
+                  }
+                }
 `
 
 //          3) fetchUser() 터미널 출력
-`
+`               {
+                  sub: 'd2cbe346-2290-4e35-b710-3202a0f44a22',
+                  iat: 1714839486,
+                  exp: 1714843086
+                }
+                ===============
+                { id: 'd2cbe346-2290-4e35-b710-3202a0f44a22' }
+                ===============
 `
