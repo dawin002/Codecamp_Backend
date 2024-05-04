@@ -14,5 +14,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     UsersResolver, //
     UsersService,
   ],
+  exports: [
+    UsersService, // UsersService가 UsersModule에 담겨서 내보내짐
+  ],
 })
 export class UsersModule {}

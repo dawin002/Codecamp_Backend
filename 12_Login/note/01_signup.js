@@ -79,7 +79,7 @@
 `//             Module 데코레이터의 imports 에 
 //               UsersModule 클래스 추가해 의존성 주입
 
-//          1) UsersModule 에 의존성 주입
+//          2) UsersModule 에 의존성 주입
 `               @Module({
                   providers: [
                     UsersResolver, //
@@ -90,7 +90,7 @@
 `//             Module 데코레이터의 providers 에서
 //               UsersResolver 와 UsersService 클래스 추가해 의존성 주입
 
-//          2) UsersResolver 에 의존성 주입
+//          3) UsersResolver 에 의존성 주입
 `               constructor(
                   private readonly usersService: UsersService, //
                 ) {}
@@ -112,7 +112,7 @@
 //              : number 타입을 인자로 받을 때 별도의 설정이 없으면 GraphQL이 실수로 인식
 //                GraphQL 인자 타입에서 정수라고 명시해줘야함
 
-//      4. 회원가입 서비스 함수 생성
+//      4. 회원가입 서비스 함수 선언
 
 //          1) Users 서비스의 create 함수 선언
 //              UsersService 클래스에 선언
