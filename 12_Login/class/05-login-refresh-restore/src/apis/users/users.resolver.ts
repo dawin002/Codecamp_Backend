@@ -3,7 +3,7 @@ import { UsersService } from './users.service';
 import { User } from './entities/user.entity';
 import { UseGuards } from '@nestjs/common';
 import { IContext } from '../../commons/interfaces/context';
-import { GqlAuthAccessGuard } from '../auth/guards/gql-auth.guard';
+import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 
 @Resolver()
 export class UsersResolver {
@@ -11,7 +11,7 @@ export class UsersResolver {
     private readonly usersService: UsersService, //
   ) {}
 
-  @UseGuards(GqlAuthAccessGuard)
+  @UseGuards(GqlAuthGuard('access'))
   @Query(() => String) // @Query 는 @nestjs/common 아니고 @nestjs/graphql에서 임포트 해야함
   fetchUser(
     @Context() context: IContext, // 인자로 받는 context 에는 req, res 등의 정보가 들어감

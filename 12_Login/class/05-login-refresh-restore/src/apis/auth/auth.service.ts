@@ -3,6 +3,7 @@ import {
   IAuthServiceLogin,
   IAuthServiceGetAccessToken,
   IAuthServiceSetRefreshToken,
+  IAuthServiceRestoreAccessToken,
 } from './interfaces/auth-service.interface';
 import { UsersService } from '../users/users.service';
 import * as bcrypt from 'bcrypt';
@@ -38,11 +39,8 @@ export class AuthService {
     return this.getAccessToken({ user });
   }
 
-  getAccessToken({ user }: IAuthServiceGetAccessToken): string {
-    return this.jwtService.sign(
-      { sub: user.id }, //
-      { secret: '나의비밀번호', expiresIn: '1h' },
-    );
+  restoreAccessToken({ user }: IAuthServiceRestoreAccessToken): string {
+    return this.getAccessToken({ user });
   }
 
   setRefreshToken({ user, context }: IAuthServiceSetRefreshToken): void {
@@ -64,5 +62,12 @@ export class AuthService {
     // 배포 환경
     // context.res.setHeader('set-Cookie', `refreshToken=${refreshToken}; path=/; domain=.mybacksite.com; SameSite=None; Secure; httpOnly;`);
     // context.res.setHeader('Access-Control-Allow-Origin'. 'https://myfrontsite.com') // 이 주소에서만 리프레시 토큰 전달 가능하게 하기
+  }
+
+  getAccessToken({ user }: IAuthServiceGetAccessToken): string {
+    return this.jwtService.sign(
+      { sub: user.id }, //
+      { secret: '나의비밀번호', expiresIn: '10s' },
+    );
   }
 }
