@@ -23,4 +23,8 @@ export class User {
   @Column()
   @Field(() => Int)
   age: number;
+
+  @Column({ default: 0 }) // 포인트는 기본값으로 0 주면 됨
+  @Field(() => Int)
+  point: number;
 }
