@@ -85,7 +85,7 @@ export class PointsTransactionsService {
 
       // finally : 성공하든 실패하든 마지막에 실행할 코드
     } finally {
-      // 쿼리 러너와 DB와의 연결 끊기
+      // 쿼리 러너와 DB와의 연결 끊기, release가 없으면 commit이 끝나도 커넥션이 안끊김
       queryRunner.release();
     }
   }
