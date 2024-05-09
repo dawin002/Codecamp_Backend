@@ -44,3 +44,32 @@
 //              : 읽기쓰기 모두잠금 pessimistic_write
 //                테이블을 접근조차 안되게 락을 걸어둠
 
+//          테이블락과 로우락
+
+//              테이블락
+//              : 테이블 전체를 조회하는 경우 테이블 전체에 거는 락
+//                다른 트랜잭션에서 테이블 전체에 접근 불가능
+//                조회 조건을 주지 않으면 자동으로 테이블락이 걸림
+`                   const payment = await queryRunner.manager.find(Payment, {
+                      lock: { mode: 'pessimistic_write' },
+                    });
+`
+//              로우락
+//              : 특정 로우를 조회하는 경우 특정 로우에만 락 걸기
+//                다른 트랜잭션에서 특정 로우를 제외한 로우에는 접근 가능
+//                where절로 조회 조건을 걸면 자동으로 로우락이 걸림
+`                   const payment = await queryRunner.manager.find(Payment, {
+                      lock: { mode: 'pessimistic_write' },
+                      where: { id: '0edb1d43-68d5-4225-a992-8b24b3c06972' },
+                    });
+`
+//          SELECT ~~~ FOR UPDATE 문
+
+//              락을 걸어놓고 테이블을 조회할 때는 'SELECT ~~~' 문이 
+//               'SELECT ~~~ FOR UPDATE'문으로 바뀜 : 업데이트를 위한 셀렉트
+
+//              => 락이 걸린 범위에 다른 트랜잭션이 접근하지 못함
+
+//      4단계 구현 실습은 강의자료 참고
+
+//          PointTransactionService의 create() 함수에 락 걸어주기

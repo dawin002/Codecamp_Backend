@@ -52,14 +52,33 @@ export class PointsTransactionsService {
       // 트랜잭션 실패 태스트를 위한 강제 에러 발생
       // throw new Error('예기치 못한 실패!! (트랜잭션 실패 테스트)');
 
-      // 2. 유저의 잔고 조회해서 업데이트하기 (알아서 락 걸어주는 방법)
-      // -> 숫자일 때만 가능, 숫자가 아니면 pointsTransactions.service2.ts 참고해 직접 락 걸기
-      const id = _user.id;
-      await queryRunner.manager.increment(User, { id }, 'point', amount);
-      // User 테이블의 id 값이 같은 로우 찾아서 'point' 값을 amount 만큼 증가시키기
-      await queryRunner.commitTransaction();
+      // 2. 유저의 잔고 조회
 
-      // 3. 최종결과 브라우저에 돌려주기
+      // 조회 도중 DB가 변경되면 변경된 DB가 조회됨
+      // const user = await this.usersRepository.findOne({
+      //   where: { id: _user.id },
+      // });
+
+      // 쿼리러너를 통해 조회해 트랜잭션이 시작될 때의 DB 상태로 조회
+      const user = await queryRunner.manager.findOne(User, {
+        where: { id: _user.id }, //          // row-lock
+        lock: { mode: 'pessimistic_write' }, // where에 해당하는 로우에만 락 걸림
+      });
+
+      // 3. 유저의 잔고 업데이트
+
+      // 업데이트 결과를 트랜잭션이 끝나고 저장해야 하기 때문에 update 대신 create 사용
+      const updatedUser = this.usersRepository.create({
+        ...user,
+        point: user.point + amount,
+      });
+      await queryRunner.manager.save(updatedUser);
+
+      // 트랜잭션의 결과 저장
+      await queryRunner.commitTransaction();
+      // 커밋이 되며 queryRunner.manager.save() 했던 것들이 DB에 저장됨
+
+      // 4. 최종결과 브라우저에 돌려주기
       return pointTransaction;
     } catch (error) {
       // 트랜잭션 중 하나라도 실패한 경우 원래대로 rollback

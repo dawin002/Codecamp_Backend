@@ -15,15 +15,21 @@ export class PaymentsService {
   async findAll() {
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
-    await queryRunner.startTransaction('READ COMMITTED');
+    await queryRunner.startTransaction('SERIALIZABLE');
     try {
-      // 하나의 트랜잭션 내에서 1개의 데이터가 조회됐으면,
-      // 해당 트랜잭션이 끝나기 전까지는(커밋 전까지는) 다시 조회하더라도 항상 1개의 데이터가 조회 되어야 함
-      // 1초간 반복해서 조회하는 중에, 누군가 등록하면(create), 유령 데이터가 생겨남 => Phantom-Read
-      setInterval(async () => {
-        const payment = await queryRunner.manager.find(Payment);
-        console.log(payment);
-      }, 1000);
+      // 조회시 락을 걸고 조회함으로써, 다른 쿼리에서 조회 못하게 막음(대기시킴) => Select ~ For Update
+      const payment = await queryRunner.manager.find(Payment, {
+        lock: { mode: 'pessimistic_write' }, // 비관적락으로 설정
+        // lock mode 추가 옵션 => write_or_fail: 잠겼으면 다른 트랜잭션은 실패처리, partial_write: 잠긴것 패스하고 나머지 수행, for~~: postgres 전용
+        where: { id: '780fa985-4194-4e18-b1f9-dda8b6552afe' }, // row-lock
+      });
+      console.log(payment);
+
+      // 처리에 5초간의 시간이 걸림을 가정!!
+      setTimeout(async () => {
+        await queryRunner.commitTransaction();
+      }, 5000);
+      return payment;
     } catch (error) {
       await queryRunner.rollbackTransaction();
     }
@@ -32,12 +38,17 @@ export class PaymentsService {
   async create({ amount }) {
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
-    await queryRunner.startTransaction('READ COMMITTED');
+    await queryRunner.startTransaction('SERIALIZABLE');
     try {
-      // 중간에 돈 추가해보기
-      const payment = this.paymentsRepository.create({ amount });
-      await queryRunner.manager.save(payment);
+      // 조회를 했을때, 바로 조회되지 않고 락이 풀릴 때 까지 대기
+      const payment = await queryRunner.manager.find(Payment, {
+        where: { id: '780fa985-4194-4e18-b1f9-dda8b6552afe' },
+      });
+      console.log('========== 철수가 시도 ==========');
+      console.log(payment);
+      console.log('==============================');
       await queryRunner.commitTransaction();
+      return payment;
     } catch (error) {
       await queryRunner.rollbackTransaction();
     }

@@ -2,7 +2,7 @@ import { UseGuards } from '@nestjs/common';
 import { Args, Context, Int, Mutation, Resolver } from '@nestjs/graphql';
 import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { PointTransaction } from './entities/pointTransaction.entity';
-import { PointsTransactionsService } from './pointsTransactions.service';
+import { PointsTransactionsService } from './pointsTransactions.service2';
 import { IContext } from 'src/commons/interfaces/context';
 
 @Resolver()
