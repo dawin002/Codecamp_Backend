@@ -94,3 +94,14 @@
 //              Dirty-Read 불가능 (막음)
 //              Non-Repeatable Read 불가능 (막음)
 //              Phantom-Read 불가능 (막음)
+
+//      MySQL에서 현재 Isolation Level 확인하기 실습
+
+//          1) DBever 에서 SQL 편집기 열기
+
+//          2) DB 정보 조회 명령어 입력
+`               show variables;
+`
+//          3) transaction_isolation 항목의 값 확인
+`               기본적으로 REPEATABLE-READ 단계로 설정되어 있음
+`

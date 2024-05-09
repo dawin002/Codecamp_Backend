@@ -15,4 +15,4 @@ import { PaymentsService } from './payments.service';
     PaymentsService,
   ],
 })
-export class PaymentsMoudle {}
+export class PaymentsModule {}
