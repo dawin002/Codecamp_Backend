@@ -8,12 +8,12 @@ export class FilesResolver {
     private readonly filesService: FilesService, //
   ) {}
 
-  @Mutation(() => String)
+  @Mutation(() => [String])
   uploadFile(
     // 브라우저에서 파일 받아오기
-    @Args({ name: 'file', type: () => GraphQLUpload }) file: FileUpload, // gql 타입과 ts 타입 다름
-  ): string {
+    @Args({ name: 'files', type: () => [GraphQLUpload] }) files: FileUpload[], // gql 타입과 ts 타입 다름
+  ): Promise<string[]> {
     // 받은 파일 upload 서비스 함수로 전달하기
-    return this.filesService.upload({ file });
+    return this.filesService.upload({ files });
   }
 }
