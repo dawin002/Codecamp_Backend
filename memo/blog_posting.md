@@ -132,3 +132,18 @@ Public Key Retrieval is not allowed 라는 에러창 뜨고 접속 안됨
 해결 방법
 
 https://velog.io/@dailylifecoding/DBeaver-MySQL-connecting-error-Public-Key-Retrieval-is-not-allowed-solved
+
+9. gcp-file-storage.json 파일 커밋해서 생긴 에러
+
+14_File_Upload 에서 GCP(Google Cloud Platform)의 시크릿 키
+gcp-file-storage.json 를 커밋해버려서 푸시가 안되는 에러 발생
+
+커밋 로그 확인해보니 gcp-file-storage.json 파일의 시크릿 키가 포함되었다고 나와서
+커밋 전부 되돌리고 .gitignore 에 gcp-file-storage.json 제대로 포함시켜서 커밋푸시 했는데
+그래도 똑같은 에러 났음
+
+다시 왼쪽 메뉴중 소스제어의 변경사항에 보니 gcp-file-storage.json 파일이
+이미 커밋할 파일에 포함되어 있음
+
+변경 사항에서 gcp-file-storage.json 파일 우클릭해서 변경 내용 스테이징 (무슨뜻인진 모름)
+을 클릭해 변경 사항에서 해당 파일 제외시키고 커밋, 푸시하니 제대로 작동함
