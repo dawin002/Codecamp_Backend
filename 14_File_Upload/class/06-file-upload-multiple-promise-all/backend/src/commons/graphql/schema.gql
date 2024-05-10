@@ -88,7 +88,7 @@ type Mutation {
   restoreAccessToken: String!
   createUser(email: String!, password: String!, name: String!, age: Int!): User!
   createBoard(createBoardInput: CreateBoardInput!): String!
-  uploadFile(file: Upload!): String!
+  uploadFile(files: [Upload!]!): [String!]!
   createPayment(amount: Float!): Payment!
   createPointTransaction(impUid: String!, amount: Int!): PointTransaction!
   createProduct(createProductInput: CreateProductInput!): Product!

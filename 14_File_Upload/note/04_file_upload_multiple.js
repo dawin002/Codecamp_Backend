@@ -28,16 +28,3 @@
 //      파일을 스토리지에 한개씩 보내면 한 파일이 스토리지에 저장될 때까지 다음 파일 전송 못함
 
 //      굳이 모든 파일을 따로따로 보낼 필요가 없음
-
-
-// 파일 업로드 요청하기 - postman
-
-//      포스트맨에서 요청하는 방법(여러개)
-`           Headers => x-apollo-operation-name: true
-
-            Body => form-data
-            operations     { "query": "mutation uploadFile($files: [Upload!]!) { uploadFile(files: $files) }", "variables": { "files": [null, null] } }
-            map            { "0": ["variables.files.0"], "1": ["variables.files.1"] }
-            0              [파일선택] 강아지.jpeg
-            1              [파일선택] 강아지2.jpeg
-`
