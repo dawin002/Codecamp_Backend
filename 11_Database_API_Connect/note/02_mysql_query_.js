@@ -1,9 +1,9 @@
 // SQL Query문
 
 
-// DBever SQL Query문 실습
+// DBeaver SQL Query문 실습
 
-//      1. DBever 로 DB 열기
+//      1. DBeaver 로 DB 열기
 
 //          1) MySQL 실행
 `               net start mysql

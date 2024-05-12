@@ -278,8 +278,8 @@
 //              프로젝트 폴더 통합 터미널에서 열어 명령어 입력
 `               yarn start:dev
 `
-//          3) DBever 에서 테이블 확인
-//              DBever 프로그램 실행해 mysql - localhost 접속
+//          3) DBeaver 에서 테이블 확인
+//              DBeaver 프로그램 실행해 mysql - localhost 접속
 //              mysql/Databases/myproject/Tables 들어가서 만든 테이블 있는지 확인
 
 //            * 중간 테이블 product_product_tags_product_tag 자동으로 만들어져 있음

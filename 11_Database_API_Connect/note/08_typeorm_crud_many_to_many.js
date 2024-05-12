@@ -235,7 +235,7 @@
 
 //          상품 등록 API 요청 인자로 상품 태그를 전달해 DB에 저장할 수 있음
 
-//          DBever 에서 확인해보면 상품마다 태그id 테이블이 존재하는건 아님
+//          DBeaver 에서 확인해보면 상품마다 태그id 테이블이 존재하는건 아님
 //          => 중간테이블 product_product_tags_product_tag 이 생성되고 여기에 저장됨
 
 //          1) 상품 등록 API 요청
@@ -281,7 +281,7 @@
                 }
 `//             상품의 태그 id가 응답으로 반환됨
 
-//          3) DBever 확인하기
+//          3) DBeaver 확인하기
 
 `               product_product_tags_product_tag 테이블 생성됨
                 필드는 productId, productTagId 가 있음

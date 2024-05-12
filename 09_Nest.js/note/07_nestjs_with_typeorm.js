@@ -100,9 +100,9 @@
 
 //          아직 MySQL에 내가 사용할 database가 없으므로 직접 만들어줘야함
 //          만들어줘야 TypeORM에서 사용 가능
-//          DBever 이용하면 쉽게 만들 수 있음
+//          DBeaver 이용하면 쉽게 만들 수 있음
 
-//          1) DBever에서 MySQL 접속
+//          1) DBeaver에서 MySQL 접속
 
 //          2) Databases 에 database 추가하기
 //              Databases 마우스 우클릭
@@ -182,6 +182,6 @@
 //          2) TypeORM이 출력하는 로그 확인하기
 //              query: ... 이라고 적혀있는 SQL 쿼리문(테이블 생성) 확인 가능
 
-//          3) DBever에서 테이블 생성 확인하기
+//          3) DBeaver에서 테이블 생성 확인하기
 //              myproject(작업한 DB) 우클릭해서 새로고침 하면 생성한 테이블 나옴
 //              board 테이블 클릭시 Column도 확인 가능

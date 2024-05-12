@@ -122,11 +122,11 @@ FROM node:18
 
 에러 해결 완료!
 
-8. 도커 mysql 실행시 DBever 에서 접속 안되는 에러
+8. 도커 mysql 실행시 DBeaver 에서 접속 안되는 에러
 
 09-09 neset with typeorm api docker 에서 발생한 에러
 
-DBever 에서 테스트 커넥션? 했을 때
+DBeaver 에서 테스트 커넥션? 했을 때
 Public Key Retrieval is not allowed 라는 에러창 뜨고 접속 안됨
 
 해결 방법

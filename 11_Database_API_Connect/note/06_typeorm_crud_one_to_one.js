@@ -314,7 +314,7 @@
                 }
 `//             상품 등록시 상품판매위치 정보도 조회할 수 있음
 
-//          => DBever 에서 확인해보면 product 테이블과 product_saleslocation 양 쪽에
+//          => DBeaver 에서 확인해보면 product 테이블과 product_saleslocation 양 쪽에
 //             등록한 상품의 정보가 들어가있음
 
 //      3. 상품 조회하기

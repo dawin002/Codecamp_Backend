@@ -148,8 +148,8 @@
 
 //      4. 도커 실행해보기
 
-//          1) 로컬에 켜둔 MySQL, DBever 종료
-//              MySQL과 DBever를 둘 다 꺼야지 3306 포트가 해제됨
+//          1) 로컬에 켜둔 MySQL, DBeaver 종료
+//              MySQL과 DBeaver를 둘 다 꺼야지 3306 포트가 해제됨
 
 //              Windows PowerShell 관리자 권한으로 열어 MySQL 종료 명령어 입력
 
@@ -158,7 +158,7 @@
 `//             * MySQL 서비스 시작 명령어
 `                   net start mysql
 `
-//              DBever은 프로그램 종료
+//              DBeaver은 프로그램 종료
 
 //          2) 도커 빌드
 `               docker-compose build
@@ -177,9 +177,9 @@
 //              my-backend-1 관련 코드가 마지막에 나와야 하고, 마지막이 아니면 데이터베이스가
 //               켜지기 전에 도커 실행 프로세스가 끝나서 DB가 덜 만들어진 것이므로 재실행해야함
 
-//      5. DBever 에서 mydocker 데이터베이스 접속 확인하기
+//      5. DBeaver 에서 mydocker 데이터베이스 접속 확인하기
 
-//          1) DBever 프로그램 실행
+//          1) DBeaver 프로그램 실행
 
 //          2) 새로운 연결 만들기
 //              왼쪽 위에 파란색 플러그 버튼 클릭
@@ -198,7 +198,7 @@
 
 //          3) 연결 확인하기
 
-//              Docker 안에서 실행된 MySQL 인데 어떻게 로컬 DBever 에서 열리는가?
+//              Docker 안에서 실행된 MySQL 인데 어떻게 로컬 DBeaver 에서 열리는가?
 //              -> 포트포워딩을 통해 연결됨
 
 //              mysql 2 로 데이터베이스 생성됨

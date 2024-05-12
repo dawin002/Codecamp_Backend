@@ -49,7 +49,7 @@
                   meetingTime: "2022-11-11"
                 },
                 productTags: ["구로", "모니터"],
-                productCategoryId: "(DBever에서 카테고리 ID 하나 복사해 넣기)"
+                productCategoryId: "(DBeaver에서 카테고리 ID 하나 복사해 넣기)"
               }) {
                 id
               }

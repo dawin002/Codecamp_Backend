@@ -256,7 +256,7 @@
                   }
                 }
 `
-//          3) DBever 로 MySQL DB 확인
+//          3) DBeaver 로 MySQL DB 확인
 //              User 테이블에 id, name, email, password, age 모두 저장되어 있음
 
 

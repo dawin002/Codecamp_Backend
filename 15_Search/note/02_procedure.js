@@ -7,7 +7,7 @@
 
 // Procedure 실습
 
-//      강의자료 참고해 DBever 에서 실습 진행
+//      강의자료 참고해 DBeaver 에서 실습 진행
 
 //      1. procedure 선언
 `           create procedure 함수이름()

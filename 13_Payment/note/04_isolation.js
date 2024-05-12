@@ -97,7 +97,7 @@
 
 //      MySQL에서 현재 Isolation Level 확인하기 실습
 
-//          1) DBever 에서 SQL 편집기 열기
+//          1) DBeaver 에서 SQL 편집기 열기
 
 //          2) DB 정보 조회 명령어 입력
 `               show variables;
