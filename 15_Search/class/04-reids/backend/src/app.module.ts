@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, CacheModule } from '@nestjs/common';
 import { BoardsModule } from './apis/boards/boards.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
@@ -11,6 +11,8 @@ import { AuthModule } from './apis/auth/auth.module';
 import { PointsTransactionsModule } from './apis/pointsTransactions/pointsTransactions.module';
 import { PaymentsModule } from './apis/payments/payments.module';
 import { FilesModule } from './apis/files/files.module';
+import { RedisClientOptions } from 'redis';
+import * as redisStore from 'cache-manager-redis-store';
 
 @Module({
   imports: [
@@ -39,6 +41,11 @@ import { FilesModule } from './apis/files/files.module';
       entities: [__dirname + '/apis/**/*.entity.*'],
       synchronize: true,
       logging: true,
+    }),
+    CacheModule.register<RedisClientOptions>({
+      store: redisStore,
+      url: 'redis://my-redis:6379',
+      isGlobal: true, // 전역으로 CacheModule 설정해 어디서든 Redis 접속할 수 있게 하기
     }),
   ],
 })

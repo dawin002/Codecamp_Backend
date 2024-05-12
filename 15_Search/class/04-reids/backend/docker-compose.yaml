@@ -23,3 +23,9 @@ services:
       MYSQL_ROOT_PASSWORD: 'root' # 도커의 MySQL 실행하며 비밀번호로 root 자동 입력
     ports:
       - 3306:3306 # MySQL 포트번호
+
+  # 컴퓨터 이름(Redis 데이터베이스 컴퓨터)
+  my-redis:
+    image: redis:latest
+    ports:
+      - 6379:6379

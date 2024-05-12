@@ -45,7 +45,7 @@
             `=> [6/6] COPY . /myFolder/                                     0.0s`
 //          RUN yarn install 명령어까지 캐시에서 가져오기로 실행됨
 
-// Docker 삭제 관련 명령어
+// Docker 삭제 관련 명령어 도커 종료
 
 //      Docker 컨테이너 삭제
             `docker rm ${"컨테이너 아이디"}`
