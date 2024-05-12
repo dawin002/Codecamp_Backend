@@ -7,6 +7,7 @@ import { ProductsSaleslocationsService } from '../productsSaleslocations/product
 import { ProductSaleslocation } from '../productsSaleslocations/entities/productSaleslocation.entity';
 import { ProductsTagsService } from '../productsTags/prodcutsTags.service';
 import { ProductTag } from '../productsTags/entities/productTag.entity';
+import { ProductSubscriber } from './entities/product.subscriber';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { ProductTag } from '../productsTags/entities/productTag.entity';
     ]),
   ],
   providers: [
+    ProductSubscriber,
     ProductsResolver, //
     ProductsService,
     ProductsSaleslocationsService,
