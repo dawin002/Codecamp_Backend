@@ -1,10 +1,23 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
+import { AppResolver } from './app.resolver';
 import { AppService } from './app.service';
+import { GraphQLModule } from '@nestjs/graphql';
+import {
+  ApolloFederationDriver,
+  ApolloFederationDriverConfig,
+} from '@nestjs/apollo';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    GraphQLModule.forRoot<ApolloFederationDriverConfig>({
+      driver: ApolloFederationDriver,
+      autoSchemaFile: 'src/commons/graphql/schema/gql', // 자동으로 생성될 스키마 파일 위치
+    }),
+  ],
+  // controllers: [AppResolver],
+  providers: [
+    AppResolver, //
+    AppService,
+  ],
 })
 export class AppModule {}
