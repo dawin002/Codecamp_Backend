@@ -1,0 +1,31 @@
+version: '3.7'
+
+# 컴퓨터 목록
+services:
+  # 컴퓨터 이름(백엔드 컴퓨터)
+  my-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/myfolder/src
+    ports:
+      - 3000:3000 # 포트포워딩 디폴트 값으로
+    env_file:
+      - ./.env.docker # 환경변수 파일 추가
+
+  # 컴퓨터 이름(데이터베이스 컴퓨터)
+  my-database:
+    # platform: linux/86_64 # 버전, 사양, CPU 문제로 DB 실행 안되면 이 코드 추가해보기
+    image: mysql:latest # MySQL로 DB 변경
+    environment:
+      MYSQL_DATABASE: 'mydocker' # 도커의 MySQL 실행하며 mydocker DB 자동 생성
+      MYSQL_ROOT_PASSWORD: 'root' # 도커의 MySQL 실행하며 비밀번호로 root 자동 입력
+    ports:
+      - 3306:3306 # MySQL 포트번호
+
+  # 컴퓨터 이름(Redis 데이터베이스 컴퓨터)
+  my-redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
