@@ -4,11 +4,12 @@ version: '3.7'
 services:
   # 컴퓨터 이름(백엔드 컴퓨터)
   my-backend:
+    image: asia.gcr.io/codecamp-backend-422908/my-backend:1.1
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - ./src:/myfolder/src
+    # volumes:
+    #   - ./src:/myfolder/src
     ports:
       - 3000:3000 # 포트포워딩 디폴트 값으로
     env_file:
