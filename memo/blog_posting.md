@@ -203,3 +203,25 @@ No available VMs만 뜨고 내가 생성한 vm이 표시되지 않는 에러
         5. 모든 설정이 올바르게 구성되었는지 다시 확인한 후 VM을 인스턴스 그룹에 추가해 봅니다.
 
     이 단계를 통해 문제를 해결할 수 있을 것입니다. 그래도 해결되지 않으면 자세한 설정 정보를 제공해 주시면 추가로 도움을 드릴 수 있습니다.
+
+11. GCP에서 Artifact Registry에 docker 이미지를 푸쉬할 때 권한 없어서 안되는 에러
+
+19-01-deploy-with-kibernetes 실습에서 docker 이미지를 build 후 push 할 때
+gcloud에 로그인한 계정이 권한이 없어서 푸쉬할 수 없다는 에러 발생
+
+챗지피티가 해결해줌
+
+챗지피티 답변
+
+    권한 문제
+
+    Google Cloud 프로젝트에 대한 적절한 권한이 없는 경우 이미지 업로드에 실패할 수 있습니다.
+
+    Artifact Registry에 이미지를 업로드하려면 roles/artifactregistry.writer 역할이 필요합니다.
+    다음 명령을 사용하여 역할을 부여할 수 있습니다.
+
+    gcloud projects add-iam-policy-binding [PROJECT_ID] \
+    --member="user:[YOUR_EMAIL]" \
+    --role="roles/artifactregistry.writer"
+
+    ( \ 지우고 한줄로 이어서 쓰기 )
