@@ -8,19 +8,19 @@ export class BoardsService {
     // 1. DB 접속해 데이터 조회했다고 가정
     const result = [
       {
-        number: 1,
+        number: 100,
         writer: '짱구',
         title: '제목 1',
         contents: '1번 글의 내용입니다!!',
       },
       {
-        number: 2,
+        number: 200,
         writer: '철수',
         title: '제목 2',
         contents: '2번 글의 내용입니다!!',
       },
       {
-        number: 3,
+        number: 300,
         writer: '유리',
         title: '제목 3',
         contents: '3번 글의 내용입니다!!',

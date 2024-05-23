@@ -4,7 +4,7 @@ version: '3.7'
 services:
   # 컴퓨터 이름(백엔드 컴퓨터)
   my-backend:
-    image: asia-northeast3-docker.pkg.dev/codecamp-backend-422908/my-backend-project-nestjs/nestjs-image:0.5 # 제일 끝에 버전은 계속 업데이트 해주기
+    image: asia-northeast3-docker.pkg.dev/codecamp-backend-422908/my-backend-project-nestjs/nestjs-image:0.7 # 제일 끝에 버전은 계속 업데이트 해주기
     # platform: linux/x86_64 # GCP 컴퓨터와 CPU 다를 경우 이 코드 추가해보기
     build:
       context: .
