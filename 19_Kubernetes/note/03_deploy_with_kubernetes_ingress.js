@@ -28,7 +28,7 @@
 //      강의자료에 없는 내용
 
 //      1. 인그레스 생성 후 Ingress의 상태가 
-//          'All backend  services are in UNHEALTHY' 인 경우
+//          'All backend  services are in UNHEALTHY' 인 경우 해결 방법
 
 //          원인
 //              생성한 'my-backend-project-ingress' 인그레스 눌러서 들어가보면 
@@ -56,3 +56,11 @@
 //              상태코드 200 성공이 떨어지도록
 
 //              => 이 방법으로 실습하기
+
+//      2. HTTP 의 / API 만들기
+
+//          여기서 backend/src/apis 내에 새로운 api 폴더를 생성하는 것이 아니라
+//          그냥 src 안에 app/controller.ts 파일 만들어 api 작성하는데
+
+//          기능이 있는 api를 만드는 것이 아니기 때문에 src 안에 app.module.ts와
+//          같은 레벨에 app/controller.ts를 만들어 api 작성하는 것
