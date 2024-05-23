@@ -48,6 +48,14 @@
 //          구글에 "Artifact Registry 이미지 업로드" 검색해서 linux 명령어 그대로
 //          윈도우 파워쉘에서 진행하기
 
+//          메인 명령어인 tag 명령어 예시
+`           docker tag asia.gcr.io/codecamp-backend-422908/my-backend-project-nestjs:0.2 asia-northeast3-docker.pkg.dev/codecamp-backend-422908/my-backend-project-nestjs/nestjs-image:0.2
+`//         docker tag [빌드한 도커 이미지 이름]:[버전] asia-northeast3-docker.pkg.dev/[GCP 프로젝트 ID]/[Artifact Registry 저장소 이름]/[저장소 하위 폴더]:[버전]
+
+//          메인 명령어인 push 명령어 예시
+`           docker push asia-northeast3-docker.pkg.dev/codecamp-backend-422908/my-backend-project-nestjs/nestjs-image:0.2
+`//         docker push asia-northeast3-docker.pkg.dev/[GCP 프로젝트 ID]/[Artifact Registry 저장소 이름]/[저장소 하위 폴더]:[버전]
+
 //        * tag 와 push 명령어 입력할 때 업로드할 이미지 URL 끝의 버전 바로 앞에 
 //          이미지 경로의 REPOSITORY 누락 확인하기
 //          ( 하위 폴더 하나를 더 추가해야된다는 말 )
