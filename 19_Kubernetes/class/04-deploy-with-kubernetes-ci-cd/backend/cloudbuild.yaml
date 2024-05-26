@@ -29,6 +29,6 @@ steps:
       - deployment/my-backend-project-nestjs
       - nestjs-image-sha256-1=asia-northeast3-docker.pkg.dev/codecamp-backend-422908/my-backend-project-nestjs/nestjs-image:0.8
 
-  env:
-    - CLOUDSDK_COMPUTE_ZONE=asia-northeast3
-    - CLOUDSDK_CONTAINER_CLOUSTER=autopilot-cluster-1
+    env:
+      - CLOUDSDK_COMPUTE_ZONE=asia-northeast3
+      - CLOUDSDK_CONTAINER_CLOUSTER=autopilot-cluster-1

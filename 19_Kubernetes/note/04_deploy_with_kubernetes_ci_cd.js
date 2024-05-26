@@ -78,3 +78,11 @@
 //              이 파일 역시 내 vscode 프로젝트 루트에서 해당 파일 위치까지의 경로를 적어줘야함
 `               19_Kubernetes/class/04-deploy-with-kubernetes-ci-cd/backend/docker-compose.prod.yaml
 `
+
+//      CLI로 깃허브 푸쉬하기
+
+//          backend 폴더 말고 프로젝트 루트에서 그냥 터미널 열어서 명령어 입력하면 됨
+`           git add .
+            git commit -m 'study(19_Kubernetes): kubernetes with CI/CD'
+            git push origin main
+`
