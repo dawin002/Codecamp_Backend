@@ -53,10 +53,13 @@
                   // [ 컨테이너 이름 ]=[ 도커 이미지 이름 및 태그(버전) ]
 `
 //          4) 환경 변수 설정
-`           env:
-              - CLOUDSDK_COMPUTE_ZONE=asia-northeast3
-              - CLOUDSDK_CONTAINER_CLOUSTER=autopilot-cluster-1
+`             env:
+                - CLOUDSDK_COMPUTE_ZONE=asia-northeast3
+                - CLOUDSDK_CONTAINER_CLOUSTER=autopilot-cluster-1
 `//         클러스터 연결할 때 GCP Cloud Shell 에서 입력하는 값들
+
+//        * env: 들여쓰기 할 때 '- name:' 과 같은 레벨이 아닌 'args:' 와 같은 레벨로 맞출 것!
+//          이거 때문에 에러 났었음
 
 
 //      경로 수정할 것

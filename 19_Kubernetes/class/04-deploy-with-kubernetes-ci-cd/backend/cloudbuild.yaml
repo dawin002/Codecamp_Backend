@@ -22,7 +22,7 @@ steps:
   # 3. kubectl set image deployment/my-backend-project-nestjs \
   #     nestjs-image-sha256-1=\
   #     asia-northeast3-docker.pkg.dev/codecamp-backend-422908/my-backend-project-nestjs/nestjs-image:0.7
-  - name: gcr.io/cloud-builders/kubectl
+  - name: 'gcr.io/cloud-builders/kubectl'
     args:
       - set
       - image
