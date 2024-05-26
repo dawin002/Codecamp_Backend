@@ -1,0 +1,34 @@
+# 1. docker-compose -f docker-compose.prod.yaml build
+# 2. docker-compose -f docker-compose.prod.yaml push
+# 3. kubectl set image deployment/my-backend-project-nestjs \
+#     nestjs-image-sha256-1= \
+#     asia-northeast3-docker.pkg.dev/codecamp-backend-422908/my-backend-project-nestjs/nestjs-image:0.7
+
+steps:
+  # 1. docker-compose -f docker-compose.prod.yaml build
+  - name: docker/compose:1.29.0
+    args:
+      - -f
+      - 19_Kubernetes/class/04-deploy-with-kubernetes-ci-cd/backend/docker-compose.prod.yaml
+      - build
+
+  # 2. docker-compose -f docker-compose.prod.yaml push
+  - name: docker/compose:1.29.0
+    args:
+      - -f
+      - 19_Kubernetes/class/04-deploy-with-kubernetes-ci-cd/backend/docker-compose.prod.yaml
+      - push
+
+  # 3. kubectl set image deployment/my-backend-project-nestjs \
+  #     nestjs-image-sha256-1=\
+  #     asia-northeast3-docker.pkg.dev/codecamp-backend-422908/my-backend-project-nestjs/nestjs-image:0.7
+  - name: gcr.io/cloud-builders/kubectl
+    args:
+      - set
+      - image
+      - deployment/my-backend-project-nestjs
+      - nestjs-image-sha256-1=asia-northeast3-docker.pkg.dev/codecamp-backend-422908/my-backend-project-nestjs/nestjs-image:0.8
+
+  env:
+    - CLOUDSDK_COMPUTE_ZONE=asia-northeast3
+    - CLOUDSDK_CONTAINER_CLOUSTER=autopilot-cluster-1
