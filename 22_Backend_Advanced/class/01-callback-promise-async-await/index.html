@@ -1,0 +1,133 @@
+<!-- `http://numbersapi.com/random?min=1&max=200` : 랜덤으로 1~200 숫자 가져오는 API-->
+<!-- `http://koreanjson.com/posts/${num}` : num번째 게시글 가져오는 API-->
+<!-- `http://koreanjson.com/posts?userId=${userId}` : userId가 쓴 게시글 가져오는 API-->
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>콜백과 친구들</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            // addEventListener를 자체적으로 만든다면 이런 과정 수행
+            // function addEventListener(aaa, bbb) {
+            //     // 세팅된 API 주소로 요청
+            //     const res = 197 // 세팅된 API 주소로부터 받아온 결과
+
+            //     if (aaa === "load") {
+            //         bbb(res)
+            //     }
+            // }
+
+            const myCallback = () => {
+                const aa = new XMLHttpRequest();
+                aa.open("get", `http://numbersapi.com/random?min=1&max=200`); // 요청 생성
+                aa.send(); // 요청 전송
+                aa.addEventListener("load", (res) => {
+                    console.log(res); // API 요청 결과
+                    const num = res.target.response.split(" ")[0]; // 가져온 랜덤 숫자
+
+                    const bb = new XMLHttpRequest();
+                    bb.open("get", `http://koreanjson.com/posts/${num}`);
+                    bb.send();
+                    bb.addEventListener("load", (res) => {
+                        console.log(res); // API 요청 결과(문자열이어서 객체로 바꿔야함)
+                        const userId = JSON.parse(res.target.response).UserId;
+
+                        const cc = new XMLHttpRequest();
+                        cc.open(
+                            "get",
+                            `http://koreanjson.com/posts?userId=${userId}`
+                        );
+                        cc.send();
+                        cc.addEventListener("load", (res) => {
+                            console.log(res); // 최종 API 요청 결과
+                        });
+                    });
+                }); // callback 함수로 요청 결과 받기
+            };
+
+            // Promise 개념
+            // new Promise((성공했을때실행시킬함수, 실패했을때실행시킬함수) => {
+            //     try {
+            //         // 여기서 API 요청을 함
+            //         const response = "철수"; // 요청 결과로 "철수" 데이터 받음
+            //         성공했을때실행시킬함수(response); // 성공하면 실행
+            //     } catch (error) {
+            //         실패했을때실행시킬함수("실패했습니다!"); // 실패하면 실행
+            //     }
+            // })
+            //     .then((res) => {
+            //         console.log(res); // 철수
+            //     })
+            //     .catch((error) => {
+            //         console.log(error); // 실패했습니다!
+            //     });
+
+            // Axios 내부 작동 방식
+            // const axios = {
+            //     get: new Promise((성공시, 실패시) => {
+
+            //     }) // => Promise 객체이기 때문에 .then()과 .catch()가 붙을 수 있음
+            // }
+
+            const myPromise = () => {
+                // Promise 사용하려면 Axios 설치해야함(<head>에 <script> 추가)
+                console.log("1번째로 실행됩니다.");
+                axios
+                    .get(`http://numbersapi.com/random?min=1&max=200`)
+                    .then((res) => {
+                        console.log("2번째로 실행됩니다.");
+                        console.log(res);
+                        const num = res.data.split(" ")[0];
+                        return axios.get(`http://koreanjson.com/posts/${num}`);
+                    })
+                    .then((res) => {
+                        console.log("3번째로 실행됩니다.");
+                        console.log(res);
+                        const userId = res.data.UserId;
+                        return axios.get(
+                            `http://koreanjson.com/posts?userId=${userId}`
+                        );
+                    })
+                    .then((res) => {
+                        console.log("4번째로 실행됩니다.");
+                        console.log(res);
+                    });
+                console.log("5번째로 실행됩니다.");
+            };
+            // Promise 안에서 다른 Promise를 사용할 때 사용할 Promise 객체를 return 하면
+            //  앞의 Promise 객체 뒤에 .then()과 .catch()를 이어서 사용할 수 있음
+            // => Promise Chaining
+            //      .then을 체인처럼 계속 엮어서 내려가는 것
+            //      이 방식으로 callback 지옥을 해결함
+
+            // axios, fetch 등 => 대표적인 Promise(.then, .catch 등의 기능)를 지원하는 기능
+            // axios, fetch 등을 기다리는 2가지 방법
+            // 1. .then() 활용
+            // 2. await 활용    => 주의) await는 아무데나 붙인다고 뒤에 것을 기다리지 않음
+            const myAsyncAwait = async () => {
+                const res1 = await axios.get(
+                    `http://numbersapi.com/random?min=1&max=200`
+                );
+                console.log(res1);
+                const num = res1.data.split(" ")[0];
+
+                const res2 = await axios.get(
+                    `http://koreanjson.com/posts/${num}`
+                );
+                console.log(res2);
+                const userId = res2.data.UserId;
+
+                const res3 = await axios.get(
+                    `http://koreanjson.com/posts?userId=${userId}`
+                );
+                console.log(res3);
+            };
+        </script>
+    </head>
+    <body>
+        <button onclick="myCallback()">Callback 연습하기!!</button>
+        <button onclick="myPromise()">Promise 연습하기!!</button>
+        <button onclick="myAsyncAwait()">AsyncAwait 연습하기!!</button>
+    </body>
+</html>
