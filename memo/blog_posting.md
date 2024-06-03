@@ -225,3 +225,15 @@ gcloud에 로그인한 계정이 권한이 없어서 푸쉬할 수 없다는 에
     --role="roles/artifactregistry.writer"
 
     ( \ 지우고 한줄로 이어서 쓰기 )
+
+12. Swagger API Docs의 API 테스트 무한 로딩
+
+Swagger API Docs에서 API를 테스트 하려면 Try it out 버튼과 Execute 버튼을 눌러서 테스트할 수 있는데 무한 로딩이 되는 상황이 발생
+
+원인
+
+swagger.js 파일에서 @swagger 로 docs를 정의할 때 api 요청에 인자가 없을 때 "\* parameters:" 를 아예 지우지 않아서 그렇다
+
+해결
+
+"\* parameters:"를 비워두지 말고 완전히 삭제해야 API 테스트가 정상적으로 작동

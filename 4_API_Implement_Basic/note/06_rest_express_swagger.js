@@ -18,9 +18,11 @@
 
 //      3. Vscode에 설치
 //          1) vscode의 작업 디렉토리에서 통합 터미널에서 열기
-//          2) swagger 설치 명령어 입력 : yarn add swagger-ui-express
-//          3) swagger-jsdoc 설치 명령어 입력 : yarn add swagger-jsdoc
-
+//          2) swagger 설치 명령어 입력
+`               yarn add swagger-ui-express
+`//         3) swagger-jsdoc 설치 명령어 입력
+`               yarn add swagger-jsdoc
+`
 //      4. setup 코드 적용
 //          1) swagger-ui-express 적용 코드 추가 (npmjs의 swagger-ui-express 문서)
                 import express from 'express';                  // require 문에서 수정
@@ -162,3 +164,16 @@
 //      2. 브라우저에서 API Docs api 요청
 //          주소창에 http://localhost:(포트 번호)/(api docs 엔드포인트 주소) 입력
 //          ex) http://localhost:3000/api-docs/
+
+
+//      발생한 에러
+
+//          Swagger API Docs에서 API를 테스트 하려면 Try it out 버튼과 Execute 버튼을 눌러서
+//          테스트할 수 있는데 무한 로딩이 되는 상황이 발생했다
+
+//          원인
+//              swagger.js 파일에서 @swagger 로 docs를 정의할 때 api 요청에 인자가 없을 때
+//              * parameters: 를 아예 지우지 않아서 그렇다
+
+//          해결
+//              * parameters:를 비우지 말고 완전히 삭제하자 API 테스트가 정상적으로 작동했다
