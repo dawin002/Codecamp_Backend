@@ -237,3 +237,21 @@ swagger.js 파일에서 @swagger 로 docs를 정의할 때 api 요청에 인자�
 해결
 
 "\* parameters:"를 비워두지 말고 완전히 삭제해야 API 테스트가 정상적으로 작동
+
+13. axios 요청 바디를 못읽음
+
+rest 실습에서 계속 요청 바디를 읽지 못하고 이런 에러 발생
+
+TypeError: Cannot read properties of undefined (reading 'phoneNumber')
+at Route.dispatch (D:\Study\Develop\Codecamp_Backend\4_API_Implement_Basic\quiz\quiz06\backend\node_modules\express\lib\router\route.js:119:3)
+at Layer.handle [as handle_request] (D:\Study\Develop\Codecamp_Backend\4_API_Implement_Basic\quiz\quiz06\backend\node_modules\express\lib\router\layer.js:95:5)
+at D:\Study\Develop\Codecamp_Backend\4_API_Implement_Basic\quiz\quiz06\backend\node_modules\express\lib\router\index.js:284:15
+at Function.process_params (D:\Study\Develop\Codecamp_Backend\4_API_Implement_Basic\quiz\quiz06\backend\node_modules\express\lib\router\index.js:346:12)
+at next (D:\Study\Develop\Codecamp_Backend\4_API_Implement_Basic\quiz\quiz06\backend\node_modules\express\lib\router\index.js:280:10)
+at cors (D:\Study\Develop\Codecamp_Backend\4_API_Implement_Basic\quiz\quiz06\backend\node_modules\cors\lib\index.js:188:7)
+at D:\Study\Develop\Codecamp_Backend\4_API_Implement_Basic\quiz\quiz06\backend\node_modules\cors\lib\index.js:224:17
+
+Express 자체는 JSON 타입을 읽지 못함
+express 객체에 JSON을 해석하는 기능을 적용시켜야 함
+
+백엔드의 index.js 파일에 app.use(express.json()); 코드 추가하기
