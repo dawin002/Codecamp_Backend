@@ -30,8 +30,8 @@
 
 //          1. 구글에서 axios 검색 후 axios 공식 문서 클릭
 //          2. cdn 사용한 설치 코드 확인
-//          <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-//          3. html 파일의 head 태그 안에 axios cdn 설치 코드 추가
+`               <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+`//         3. html 파일의 head 태그 안에 axios cdn 설치 코드 추가
 //          4. 코드 실행하기
 
 //          => 브라우저가 위 cdn 코드를 읽을 때 src 주소에서 axios를 다운로드 받음
