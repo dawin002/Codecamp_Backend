@@ -19,16 +19,18 @@
 
 //      2. vscode에 Apollo Server 설치
 //          1) 백엔드 폴더 통합 터미널에서 열기
-//          2) 설치 명령어 입력: yarn add @apollo/server
-
+//          2) 설치 명령어 입력
+`               yarn add @apollo/server
+`
 //      3. vscode에 GraphQL 설치
 //          1) 백엔드 폴더 통합 터미널에서 열기
-//          2) 설치 명령어 입력: yarn add graphql
-
+//          2) 설치 명령어 입력 
+`               yarn add graphql
+`
 //      ** 한번에 설치하는 법
 //           : yarn add 뒤에 설치할 모듈 연달아서 쓰기
-//             yarn add @apollo/server graphql
-
+`              yarn add @apollo/server graphql
+`
 
 // Apollo Server 주요 코드 설명
 
