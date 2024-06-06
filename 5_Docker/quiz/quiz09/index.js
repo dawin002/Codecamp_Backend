@@ -99,6 +99,7 @@ app.post('/users', (req, res) => {
   res.send('가입이 완료되었습니다.');
 });
 
+mongoose.set('debug', true);
 mongoose
   .connect('mongodb://my-database:27017/mydocker')
   .then(() => console.log('mongoose db 접속 성공'))
