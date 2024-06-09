@@ -56,7 +56,7 @@
 //          1) axios 가져오기
                 `import axios from 'axios'`
 //          2) cheerio 가져오기
-                `import axios from 'cheerio'`
+                `import cheerio from 'cheerio'`
 
 //      5. 스크래핑 함수 생성
 //          1) 함수 선언
