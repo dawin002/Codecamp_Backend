@@ -46,7 +46,7 @@ app.post('/users', async (req, res) => {
       phone,
       prefer,
     });
-    await sendTemplateToEmail({ email, welcomeTemplate });
+    // await sendTemplateToEmail({ email, welcomeTemplate });
     res.send(newUser._id);
   } catch (error) {
     console.error(error.message);
@@ -75,8 +75,9 @@ app.post('/tokens/phone', async (req, res) => {
       await saveNewToken({ phone, token });
     }
 
-    const message = await sendTokenToSMS({ phone, token });
-    res.send(message);
+    // const message = await sendTokenToSMS({ phone, token });
+    // res.send(message);
+    res.send('인증 번호를 전송했습니다.');
   } catch (error) {
     console.error(error.message);
     res.status(422).send(error.message);
@@ -84,12 +85,12 @@ app.post('/tokens/phone', async (req, res) => {
 });
 
 app.patch('/tokens/phone', async (req, res) => {
-  const { phone, token } = req.body;
+  const { phone, tokenInput } = req.body;
 
   try {
     const savedToken = await getTokenByPhone({ phone });
     verifyPhoneTokenExists({ savedToken });
-    verifyTokenMatch({ savedToken, token });
+    verifyTokenMatch({ savedToken, tokenInput });
     await authorizeToken({ savedToken });
     res.send(true);
   } catch (error) {

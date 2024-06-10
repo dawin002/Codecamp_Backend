@@ -41,8 +41,8 @@ export const verifyPhoneTokenExists = ({ savedToken }) => {
   }
 };
 
-export const verifyTokenMatch = ({ savedToken, token }) => {
-  if (savedToken.token !== token) {
+export const verifyTokenMatch = ({ savedToken, tokenInput }) => {
+  if (savedToken.token !== tokenInput) {
     throw new Error('토큰 번호가 일치하지 않습니다.');
   }
 };
