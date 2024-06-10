@@ -6,12 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./controllers:/myFolder/controllers
-      - ./models:/myFolder/models
-      - ./swagger:/myFolder/swagger
-      - ./utils:/myFolder/utils
-      - ./views:/myFolder/views
-      - ./index.js:/myFolder/index.js
+      - ./src:/myFolder/src
     ports:
       - 3000:3000
 

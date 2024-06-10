@@ -8,4 +8,6 @@ RUN yarn install
 
 COPY . /myFolder/
 
+WORKDIR /myFolder/src
+
 CMD yarn start:dev
