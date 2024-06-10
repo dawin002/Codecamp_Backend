@@ -9,7 +9,7 @@ export class UserService {
     return new User({
       name,
       email,
-      personal: maskedPersonal(personal),
+      personal: this.maskedPersonal(personal),
       prefer,
       pwd: password,
       phone,

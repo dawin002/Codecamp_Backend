@@ -1,7 +1,7 @@
 export class TokenController {
   tokenService;
 
-  constructor(tokenService) {
+  constructor({ tokenService }) {
     this.tokenService = tokenService;
   }
 
@@ -9,18 +9,18 @@ export class TokenController {
     const { phone } = req.body;
 
     try {
-      tokenService.validatePhoneNumber({ phone });
+      this.tokenService.validatePhoneNumber({ phone });
 
-      const savedToken = await tokenService.getTokenByPhone({ phone });
-      const tokenNumber = tokenService.createToken();
+      const savedToken = await this.tokenService.getTokenByPhone({ phone });
+      const tokenNumber = this.tokenService.createToken();
 
       if (savedToken) {
-        await tokenService.updateToken({ savedToken, tokenNumber });
+        await this.tokenService.updateToken({ savedToken, tokenNumber });
       } else {
-        await tokenService.saveNewToken({ phone, tokenNumber });
+        await this.tokenService.saveNewToken({ phone, tokenNumber });
       }
 
-      // const message = await tokenService.sendTokenToSMS({ phone, token });
+      // const message = await this.tokenService.sendTokenToSMS({ phone, token });
 
       // res.send(message);
       res.send('인증 번호를 전송했습니다.');
@@ -34,12 +34,12 @@ export class TokenController {
     const { phone, tokenNumber } = req.body;
 
     try {
-      const savedToken = await tokenService.getTokenByPhone({ phone });
+      const savedToken = await this.tokenService.getTokenByPhone({ phone });
 
-      tokenService.verifyPhoneTokenExists({ savedToken });
-      tokenService.verifyTokenMatch({ savedToken, tokenNumber });
+      this.tokenService.verifyPhoneTokenExists({ savedToken });
+      this.tokenService.verifyTokenMatch({ savedToken, tokenNumber });
 
-      await tokenService.authorizeToken({ savedToken });
+      await this.tokenService.authorizeToken({ savedToken });
 
       res.send(true);
     } catch (error) {

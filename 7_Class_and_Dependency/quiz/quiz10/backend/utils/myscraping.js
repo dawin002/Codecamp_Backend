@@ -2,7 +2,7 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 
 export class MyScraping {
-  getOpenGraph = async ({ prefer }) => {
+  static getOpenGraph = async ({ prefer }) => {
     const preferHtml = await axios.get(prefer);
 
     const $ = cheerio.load(preferHtml.data);

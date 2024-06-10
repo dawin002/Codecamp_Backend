@@ -14,17 +14,17 @@ export class UserController {
   signUpUser = async (req, res) => {
     const { name, email, personal, prefer, password, phone } = req.body;
     try {
-      const savedToken = await tokenService.getTokenByPhone({ phone });
-      tokenService.verifyTokenAuthentication({ savedToken });
+      const savedToken = await this.tokenService.getTokenByPhone({ phone });
+      this.tokenService.verifyTokenAuthentication({ savedToken });
       const og = await MyScraping.getOpenGraph({ prefer });
-      const newUser = userService.createUser({ ...req.body, og });
-      await userService.saveUser({ newUser });
-      const welcomeTemplate = emailService.getWelcomeTemplate({
+      const newUser = this.userService.createUser({ ...req.body, og });
+      await this.userService.saveUser({ newUser });
+      const welcomeTemplate = this.emailService.getWelcomeTemplate({
         name,
         phone,
         prefer,
       });
-      // await emailService.sendTemplateToEmail({ email, welcomeTemplate });
+      // await this.emailService.sendTemplateToEmail({ email, welcomeTemplate });
       res.send(newUser._id);
     } catch (error) {
       console.error(error.message);
@@ -33,7 +33,7 @@ export class UserController {
   };
 
   getUserInfo = async (req, res) => {
-    const users = await userService.getUsers();
+    const users = await this.userService.getUsers();
     console.log(users);
     res.send(users);
   };
