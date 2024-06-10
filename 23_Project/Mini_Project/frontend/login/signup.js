@@ -16,10 +16,10 @@ const submitToken = async () => {
   const phone02 = document.getElementById('PhoneNumber02').value;
   const phone03 = document.getElementById('PhoneNumber03').value;
   const phone = phone01 + phone02 + phone03;
-  const tokenInput = document.getElementById('TokenInput').value;
+  const tokenNumber = document.getElementById('TokenInput').value;
   const res = await axios.patch('http://localhost:3000/tokens/phone', {
     phone,
-    tokenInput,
+    tokenNumber,
   });
   console.log(res);
   console.log('핸드폰 인증 완료');

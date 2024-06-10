@@ -13,15 +13,15 @@ export const getTokenByPhone = async ({ phone }) => {
   return await Token.findOne({ phone: phone });
 };
 
-export const updateToken = async ({ savedToken, token }) => {
-  savedToken.token = token;
+export const updateToken = async ({ savedToken, tokenNumber }) => {
+  savedToken.token = tokenNumber;
   await savedToken.save();
   console.log(`토큰이 업데이트되었습니다.`);
 };
 
-export const saveNewToken = async ({ phone, token }) => {
+export const saveNewToken = async ({ phone, tokenNumber }) => {
   const newToken = new Token({
-    token,
+    token: tokenNumber,
     phone,
     isAuth: false,
   });
@@ -41,8 +41,8 @@ export const verifyPhoneTokenExists = ({ savedToken }) => {
   }
 };
 
-export const verifyTokenMatch = ({ savedToken, tokenInput }) => {
-  if (savedToken.token !== tokenInput) {
+export const verifyTokenMatch = ({ savedToken, tokenNumber }) => {
+  if (savedToken.token !== tokenNumber) {
     throw new Error('토큰 번호가 일치하지 않습니다.');
   }
 };

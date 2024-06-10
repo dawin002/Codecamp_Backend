@@ -255,3 +255,34 @@ Express 자체는 JSON 타입을 읽지 못함
 express 객체에 JSON을 해석하는 기능을 적용시켜야 함
 
 백엔드의 index.js 파일에 app.use(express.json()); 코드 추가하기
+
+14. docker-compose up 으로 도커를 실행할 때 nodemon을 찾지 못하는 에러
+
+에러 상황
+docker-compose up 으로 도커를 실행하는데 node_moduels가 로컬에 있을 때는 정상적으로 실행되고 node_moduels가 로컬에 없을 때는 nodemon을 찾을 수 없어서 실행할 수 없다는 에러가 발생함
+
+에러 내용
+my-backend-1 | yarn run v1.22.19
+my-backend-1 | $ nodemon -L index.js
+my-backend-1 | /bin/sh: 1: nodemon: not found
+my-backend-1 | error Command failed with exit code 127.
+my-backend-1 | info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+이해가 안됐던 부분
+.dockerignore 파일에 node_modules 폴더를 포함시켜뒀기 때문에 어차피 로컬의 node_modules는 도커 컴퓨터 내로 복사되지 않는데 어째서 로컬 node_modules 폴더 유무에 따라 도커 컴퓨터에서 nodemon을 찾을 수 없는지 이해가 안됐음
+
+에러 해결 과정 1) package.json, yarn.lock 에서 nodemon 버전 바꾸기
+이전에 동작했던 프로젝트의 버전을 가져와서 그대로 바꾸고 도커 빌드 및 실행
+효과 없었음 2) 로컬에 node_modules 폴더 있는 상태로 도커 컴퓨터 쉘에서 확인해보기
+node_modules가 있는 상태에서는 도커 컴퓨터 /bin/bash 쉘의 package.json,
+yarn.lock, node_modules 폴더 모두 nodemon이 설치되어 있었음 3) nodemon 사용하지 않고 도커 빌드 및 실행해보기
+Dockerfile 에서 nodemon이 아니라 node 로 index.js를 실행할 수 있게 package.json 의 script 의 "start:dev": "nodemon -L index.js" 를 "node index.js"로 바꾸고 도커를 빌드 및 실행해봄
+그러자 이번엔 express 모듈을 찾을 수 없다는 에러가 발생
+express 또한 node_modules에 포함되는 모듈이어서 당연히 있어야하는데 찾을 수 없다는 것에서 이상한 점을 느낌, node_modules가 모두 다 설치가 되지 않는 것은 아닌지 의심을 하게 됨 4) node_modules 가 왜 설치되지 않는지 고민해보기
+분명 도커 파일을 빌드할 때 yarn install이 실행되는 것을 로그로 확인했는데 파일이 실행된 이후에는 node_modules가 설치되지 않았다는 점, 로컬에 node_modules가 있을 때는 정상적으로 실행이 된다는 점에서 힌트를 얻어 혹시 node_modules가 docker-compose.yaml 파일의 volumes (소스코드를 동기화하는 것) 때문에 자동으로 삭제되는 것인지 의심이 들었고, 내 volumes를 확인해보니 .:/myFolder (모든 파일을 /myFolder 와 동기화) 라는 코드가 의심되었음
+이에 모든 파일을 동기화하는 코드를 지우고 소스코드에 해당하는 폴더(컨트롤러, 모델, 유틸, ...)와 index.js 파일만 volumes에 추가해 동기화하니 도커가 정상적으로 실행됨
+!
+
+결론
+docker-compose.yaml 파일의 volumes 에 등록한 폴더는 로컬에 있는 파일을 모두 도커에 동기화해주지만, 로컬에 없는 파일이나 폴더는 도커에서도 지워버린다는 것을 알게 됨
+그리고 node_modules 폴더를 .dockerignore 에 포함시켜 두더라도 volumes 의 범위에 node_modules 폴더가 포함되어 있다면 로컬에 없기 때문에 도커에서 삭제될 수 있다는 것을 알게됨

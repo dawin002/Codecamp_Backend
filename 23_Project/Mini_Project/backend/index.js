@@ -67,12 +67,12 @@ app.post('/tokens/phone', async (req, res) => {
     validatePhoneNumber({ phone });
 
     const savedToken = await getTokenByPhone({ phone });
-    const token = createToken();
+    const tokenNumber = createToken();
 
     if (savedToken) {
-      await updateToken({ savedToken, token });
+      await updateToken({ savedToken, tokenNumber });
     } else {
-      await saveNewToken({ phone, token });
+      await saveNewToken({ phone, tokenNumber });
     }
 
     // const message = await sendTokenToSMS({ phone, token });
@@ -85,12 +85,12 @@ app.post('/tokens/phone', async (req, res) => {
 });
 
 app.patch('/tokens/phone', async (req, res) => {
-  const { phone, tokenInput } = req.body;
+  const { phone, tokenNumber } = req.body;
 
   try {
     const savedToken = await getTokenByPhone({ phone });
     verifyPhoneTokenExists({ savedToken });
-    verifyTokenMatch({ savedToken, tokenInput });
+    verifyTokenMatch({ savedToken, tokenNumber });
     await authorizeToken({ savedToken });
     res.send(true);
   } catch (error) {
