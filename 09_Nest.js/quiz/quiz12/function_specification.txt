@@ -1,0 +1,21 @@
+기능구현목록
+
+과제1
+
+1. quiz12 위치에서 새로운 Nest.js 프로젝트 생성 - o
+2. Nest.js 프로젝트의 app.module.ts 부분에서 GraphQLModule을 연동 - o
+3. 서버 포트 3000번으로 설정 - o
+4. Nest.js에서 graphql을 사용할 때 autoSchemaFile 옵션을 사용하여 code-first 방법으로 세팅 - o
+
+과제2
+
+1. 위 Nest.js 프로젝트에서 Starbucks 조회 API 구현
+2. API 이름은 fetchStarbucks로 선언
+3. fetchStarbucks API 요청에 대한 응답으로 “스타벅스 커피 목록을 조회합니다” 응답
+4. 서버를 띄우고, 플레이그라운드에서 API를 테스트
+5. 테스트 결과 예시
+    {
+        "data": {
+            "fetchStarbucks": “스타벅스 커피 목록을 조회합니다”
+        }
+    }
