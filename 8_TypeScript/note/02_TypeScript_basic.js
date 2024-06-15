@@ -113,7 +113,7 @@
 //               (IProfile 에는 hobby 있는데 prifle 에는 hobby 없음)
 
 //          3) 타입 명시 (선택적 프로퍼티)
-                `interface IProfile {
+`               interface IProfile {
                     name: string
                     age: number | string
                     hobby?: string      // ? : 선택적 프로퍼티
@@ -162,7 +162,7 @@
                 }
 
                 const result = add(100, 200, "원")
-`//             '=>' 는 반환타입 뒤에 작성
+`//             반환 타입 명시는 '=>' 앞에 작성
 
 
 //      5. any 타입

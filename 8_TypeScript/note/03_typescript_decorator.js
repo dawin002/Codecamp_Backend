@@ -15,7 +15,7 @@
                 class CatsController {
 `//             @Controller 가 데코레이터 함수(?)
 
-//          3) Controller 함수 구현
+//          3) Controller 함수 직접 구현 예시
 `               function Controller(aaa: any) {
                     console.log(aaa)
                 }

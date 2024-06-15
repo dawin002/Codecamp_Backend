@@ -43,15 +43,15 @@
 `
 //          객체 타입
 //              직접 정의해서 사용
-`               Interface IProfile {
+`               interface IProfile {
                     name: string;
                     age: number;
                 }
 
                 let profile: IProfile = { name: "철수", age: 13 }
 `
-//              - Interface : 타입을 만들 때 사용하는 키워드
-//              - IProfile : 타입명, 보편적으로 타입명 앞에 'I' 붙임(Interface의 첫글자)
+//              - interface : 타입을 만들 때 사용하는 키워드
+//              - IProfile : 타입명, 보편적으로 타입명 앞에 'I' 붙임(interface의 첫글자)
 
 
 // TypeScript 설치
