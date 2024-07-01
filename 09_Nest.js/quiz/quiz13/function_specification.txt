@@ -17,10 +17,10 @@
 
 과제2 : Starbucks 메뉴 등록 API 만들기
 
-1. [] Starbucks 메뉴 등록 API 구현
-1-1. [] 지난 시간 과제로 만든 module, resolver, service 파일을 사용
-1-2. [] API 이름은 createStarbucks
-1-3. [] 필수적으로 입력되어야 하는 값
+1. [x] Starbucks 메뉴 등록 API 구현
+1-1. [x] 지난 시간 과제로 만든 module, resolver, service 파일을 사용
+1-2. [x] API 이름은 createStarbucks
+1-3. [x] 필수적으로 입력되어야 하는 값
         - 음료명
         - 가격
         - 1회 제공량 (kcal)
@@ -29,20 +29,20 @@
         - 나트륨 (mg)
         - 당류 (g)
         - 카페인 (mg)
-1-4. [] API에서 데이터를 받을 때는 dto에서 input 타입을 만들고, 해당 input 타입을 활용해서 받기
-1-5. [] entities 폴더를 만들어 starbucks의 entity 정의
-1-6. [] starbucks entity에 PrimaryGeneratedColumn 추가
+1-4. [x] API에서 데이터를 받을 때는 dto에서 input 타입을 만들고, 해당 input 타입을 활용해서 받기
+1-5. [x] entities 폴더를 만들어 starbucks의 entity 정의
+1-6. [x] starbucks entity에 PrimaryGeneratedColumn 추가
         데이터가 한 줄씩 쌓일 때마다 자동으로 숫자 1씩 증가하는 값이 생성
-1-7. [] DB에는 저장하지 않고, 해당 API에서 받아온 데이터를 console.log를 활용하여 출력
-1-8. [] 클라이언트에 "등록에 성공하였습니다." 응답
-1-9. [] 서버를 띄우고, 플레이그라운드에서 API를 테스트
+1-7. [x] DB에는 저장하지 않고, 해당 API에서 받아온 데이터를 console.log를 활용하여 출력
+1-8. [x] 클라이언트에 "등록에 성공하였습니다." 응답
+1-9. [x] 서버를 띄우고, 플레이그라운드에서 API를 테스트
 
 
 과제3 : Starbucks 메뉴 조회 API 만들기 
 
-1. [] 기존에 존재하고 있는 Starbucks 조회 API를 수정
-1-1. [] fetchStarbucks API를 수정
-1-2. [] 필수적으로 조회되어야 하는 값
+1. [x] 기존에 존재하고 있는 Starbucks 조회 API를 수정
+1-1. [x] fetchStarbucks API를 수정
+1-2. [x] 필수적으로 조회되어야 하는 값
         - 음료명
         - 가격
         - 1회 제공량 (kcal)
@@ -51,5 +51,5 @@
         - 나트륨 (mg)
         - 당류 (g)
         - 카페인 (mg)
-1-3. [] DB에서 꺼내오지 않고, 배열 안에 5개의 커피 데이터 객체를 하드코딩하여 전달
-1-4. [] 서버를 띄우고, 플레이그라운드에서 API를 테스트
+1-3. [x] DB에서 꺼내오지 않고, 배열 안에 5개의 커피 데이터 객체를 하드코딩하여 전달
+1-4. [x] 서버를 띄우고, 플레이그라운드에서 API를 테스트
