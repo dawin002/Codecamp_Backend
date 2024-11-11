@@ -16,8 +16,8 @@
 //      3. 환경변수 생성
 //          ".env" 파일에 필요한 변수 선언 및 초기화
 //          예시)
-//          SMS_KEY = NCSIYWB4QAC1NTSP   * 초기화할 때 따옴표 사용하지 않음!!
-//          SMS_SECRET = IECMDSCNKBKFX4MRQD22PRVITDY3ND7K
+//          SMS_KEY = WB4QACNCSIY1NTSP (가짜키)   * 초기화할 때 따옴표 사용하지 않음!!
+//          SMS_SECRET = IKFX4MRQDNKBVITDY3N22PRECMDSCD7K (가짜키)
 //          SMS_SENDER = 01012345678
 
 //      4. 환경변수 라이브러리 설치
