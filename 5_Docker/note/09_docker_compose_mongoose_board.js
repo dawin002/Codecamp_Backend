@@ -51,14 +51,14 @@
 
 //          3) Board 모델 DB에 저장
                 `await board.save();`
-//              - save() : 모델을 DB에 저장하는 mongosse model의 메서드
+//              - save() : 모델을 DB에 저장하는 mongoose model의 메서드
 //              - await : DB에 저장이 되었는지 확인하기 위해 동기적 실행
 //              - await 를 사용하기 위해 게시판 등록 API 함수에 async 키워드 추가
 
 //      2. 게시판 조회 API 수정
 //          1) DB에서 Board 컬렉션 가져오기
                 `const result = await Board.find();`
-//              - find() : DB의 컬렉션을 가져오는 mongosse model의 메서드
+//              - find() : DB의 컬렉션을 가져오는 mongoose model의 메서드
 //              - await : DB의 데이터를 가져와 사용해야하기 때문에 동기적 실행
 //              - await 를 사용하기 위해 게시판 등록 API 함수에 async 키워드 추가
 
