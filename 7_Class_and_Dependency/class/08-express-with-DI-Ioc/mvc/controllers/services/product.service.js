@@ -1,12 +1,11 @@
 export class ProductService {
-
     // 판매완료 여부를 확인하는 함수
-    checkSoldout = () => {
+    checkSoldOut = () => {
         console.log("판매가 완료되었는지 검사합니다.");
         // 현재 상품의 판매 여부 검증 코드 (대략 10줄 정도)
         // ...
         // ...
         // ...
         // ...
-    }
+    };
 }

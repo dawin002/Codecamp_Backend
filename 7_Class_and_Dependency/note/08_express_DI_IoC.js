@@ -95,7 +95,7 @@
 `               const cashService = new CashService();
 `
 //          2) CashService 가져오기
-`               import { CashService } from './mvc/controllers/services/cash.service.js''
+`               import { CashService } from './mvc/controllers/services/cash.service.js'
 `
 //      2. ProductController 에서 의존성 주입 받기
 
