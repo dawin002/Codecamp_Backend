@@ -63,7 +63,7 @@
 
 //      5. IoC
 
-//          제어의 역전 (Inversion of Controll)
+//          제어의 역전 (Inversion of Control)
 
 //          NestJS 에서는 의존성 주입를 우리가 직접 관리하지 않고 설정 파일을 
 //           변경함에 따라 알아서 의존성 주입 코드를 관리해줌
