@@ -8,7 +8,7 @@ export class AppController {
 
   // getHello 라는 API 함수 (Get 메서드)
   //
-  @Get() // 엔드포인트 주소는 괄호 안에 작성('/products/buy') 처럼
+  @Get('/products/buy') // 엔드포인트 주소는 괄호 안에 작성('/products/buy') 처럼
   getHello(): string {
     const qqq = 3;
     qqq;
