@@ -95,7 +95,7 @@
 
 //          처음 프로젝트를 생성했을 때 기본적으로 만들어져 있는 폴더 구조
 
-//          node_modeules   : 모듈이 설치된 폴더
+//          node_modules   : 모듈이 설치된 폴더
 //          src             : 소스 코드 (API, TypeScript 파일)
 //                            * 여기에 controller, module, services 파일 저장
 //          test            : 테스트 코드 (TDD)
@@ -130,12 +130,12 @@
 
 //              dependencies" 와 "devDependencies" 로 나뉘는 이유
 //                  둘 다 똑같이 node_modules 에 설치되기는 함
-//                  다만 devDependenceis 의 라이브러리는 배포할 때 배포할 프로그램에 
+//                  다만 devDependencies 의 라이브러리는 배포할 때 배포할 프로그램에 
 //                   포함되지 않아 설치 시간으 단축할 수 있음
 
 //              자동으로 설치된 라이브러리는 기본적으로 유명한 것들
 
-//                  jset : 테스트코드 관련 가장 유명한 라이브러리
+//                  jest : 테스트코드 관련 가장 유명한 라이브러리
 //                  eslint : 린터 중 가장 유명한 라이브러리
 //                  prettier : 포멧터 중 가장 유명한 라이브러리
 //                  typescript

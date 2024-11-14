@@ -51,14 +51,14 @@
 
 //          3) Board 모델 DB에 저장
                 `await board.save();`
-//              - save() : 모델을 DB에 저장하는 mongosse model의 메서드
+//              - save() : 모델을 DB에 저장하는 mongoose model의 메서드
 //              - await : DB에 저장이 되었는지 확인하기 위해 동기적 실행
 //              - await 를 사용하기 위해 게시판 등록 API 함수에 async 키워드 추가
 
 //      2. 게시판 조회 API 수정
 //          1) DB에서 Board 컬렉션 가져오기
                 `const result = await Board.find();`
-//              - find() : DB의 컬렉션을 가져오는 mongosse model의 메서드
+//              - find() : DB의 컬렉션을 가져오는 mongoose model의 메서드
 //              - await : DB의 데이터를 가져와 사용해야하기 때문에 동기적 실행
 //              - await 를 사용하기 위해 게시판 등록 API 함수에 async 키워드 추가
 
@@ -68,11 +68,11 @@
 //          1) docker-compose build
 //          2) docker-compose up
 
-//      2. MongoDB Compase 로 DB 접속
-//          1) MongoDB Compase 프로그램 실행
+//      2. MongoDB Compass 로 DB 접속
+//          1) MongoDB Compass 프로그램 실행
 
 //          2) localhost:27017 연결
-//              MongoDB Compase 프로그램의 connect 버튼 클릭
+//              MongoDB Compass 프로그램의 connect 버튼 클릭
 
 //          여기서 에러 발생
 //              docker-compose.yaml 파일에서 포트포워딩 꺼놔서 그럼
@@ -83,7 +83,7 @@
 //              따라서 docker-compose.yaml 파일이 수정된 경우에는 up 만 다시 해주면 됨
 
 //          3) localhost:27017 재연결
-//              Mongo Compase 프로그램의 connect 버튼 클릭해
+//              Mongo Compass 프로그램의 connect 버튼 클릭해
 
 //      3. Postman 으로 게시판 등록 API 요청 보내기
 //          1) Postman 에서 POST 메서드 선택
@@ -106,7 +106,7 @@
 //          5) 응답 바디로 돌아오는 데이터 확인
 //              "게시물 등록에 성공했습니다."
 
-//          6) MongoDB Compase 에서 등록한 게시글 확인
+//          6) MongoDB Compass 에서 등록한 게시글 확인
 //              mydocker DB의 -> boards 컬렉션 -> Documents 중 저장한 데이터가 존재하는지 확인
 
 //      4. Postman 으로 게시판 조회 API 요청 보내기

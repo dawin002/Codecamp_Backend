@@ -60,7 +60,7 @@
 //              엔드포인트 주소 '/'로 api 요청할 수 있음
 
 //          4) Postman 실행해 API 요청 보내기
-`               GET, http://localhost:3000/
+`               GET, http://localhost:3000/products/buy
 `//             입력 후 Send 버튼 누르기
 
 //          5) API 응답 확인하기
