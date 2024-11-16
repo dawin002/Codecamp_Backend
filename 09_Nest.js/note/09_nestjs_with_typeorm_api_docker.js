@@ -115,7 +115,7 @@
 
 //              type 속성은 Union 타입이라 특정 값 중에서만 고를 수 있는데, DATABASE_TYPE
 //               환경 변수가 어떤 값인지 몰라 에러 뜸
-//              => as 'mysql' 로 이 변수의 값은 'mysql'이야 라고 강제해줌으로써 에러 잡음
+//              => as 'mysql' 로 이 변수의 값은 'mysql'이야 라고 강제해 줌으로써 에러 잡음
 
 //          5) @nestjs/config 설치
 
@@ -126,7 +126,7 @@
 //              @nestjs/config 설치
 `               yarn add @nestjs/config
 `
-//          6) @nestjs/config 적용
+//          6) @nestjs/config 적용 (AppModule)
 
 //              @nestjs/config 라이브러리 가젹오기
 `               import { ConfigModule } from '@nestjs/config';
@@ -192,7 +192,7 @@
 //              에러 해결 방법
 //              : DB 접속 정보 입력 창에서 Driver properties 탭으로 이동
 //                -> Driver properties 항목에서 두 속성 값 변경
-//                -> allowPublicKeyRetrival : true
+//                -> allowPublicKeyRetrieval : true
 //                -> useSSL : false
 //                -> Test Connection 부터 진행하기
 
