@@ -15,13 +15,13 @@
 //          3) API 함수에서 요청으로부터 인자 받아 전달하기
 `               @Mutation()
                 createBoard(
-                  @Args('writer') wirter: string,
+                  @Args('writer') writer: string,
                   @Args('title') title: string,
                   @Args('contents') contents: string,
                 ) {
                     this.boardsService.create(writer, title, contents);
                 }
-`//             @Args('writer') wirter: string,
+`//             @Args('writer') writer: string,
 //              : GraphQL로부터 'writer' 필드 값을 writer 변수에 받을거고 string 타입이다
 
 //              this.boardsService.create(writer, title, contents);
@@ -213,7 +213,8 @@
 
 //          board.service.ts 의 create() 의 인자의 타입이 명시되어 있지 않음
 
-//          create 함수에서 사용되는 인자 Board 타입을 인터페이스로 정의해야함
+//          create 함수에서 사용되는 매개변수 { createBoardInput }의 타입을
+//           인터페이스로 정의해야함
 
 //          1) 인터페이스를 저장할 폴더 생성
 //              src/apis/boards/interface
