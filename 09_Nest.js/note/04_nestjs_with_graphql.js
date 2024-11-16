@@ -98,7 +98,7 @@
 //              [boards.resolver.ts]
 `                   AppController -> BoardsResolver
 `
-//              [boards.resolver.ts]
+//              [boards.service.ts]
 `                   AppService -> BoardsService
 `
 //          2) 데코레이터 수정

@@ -163,7 +163,7 @@
 
 //      2. Required 타입
 
-//          Required : 부분
+//          Required : 필수
 //          모든 프로퍼티를 무조건 있어야 되게 만든 타입
 
 `           type ReProfile = Required<IProfile>;
@@ -237,7 +237,7 @@
 
 `           type UType2 = keyof IProfile;
 `
-//          UType2로 선언한 변수는 IProfile 의 키값(문자열)로만 초기화 가능
+//          UType2로 선언한 변수는 IProfile 의 키값(문자열)으로만 초기화 가능
 
 //          이렇게 정의한 것과 같음
 `           type UType2 = "name" | "age" | "school" | "hobby";
@@ -271,5 +271,5 @@
             };
 `
 //          Partial을 사용해 IProfile의 프로퍼티 뒤에 ? 붙임
-//          cnady 프로퍼티만 초기화해도 선언 가능
+//          candy 프로퍼티만 초기화해도 선언 가능
   
