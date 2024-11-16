@@ -62,7 +62,7 @@
 //              위 명령어로 @nestjs/typeorm을 설치했을 때 import문에서 
 //               해당 모듈을 찾을 수 없다는 에러가 발생
 
-//              @nestjs/typeorm 모듈이 package.json에 추가되어 있지 않았음
+//              @nestjs/typeorm 모듈이 package.json에 추가가 안됨
 
 //              위 설치 명령어에서 나머지 다 빼고 설치해봐도 안됐음
 
@@ -171,7 +171,7 @@
 
 //          3) DB에 동기화시키기
 //              TypeOrmModule의 forRoot 설정에 synchronize 옵션 추가하기
-`               synchronize: ture,
+`               synchronize: true,
 `
 
 //      6. 서버 실행해 DB 변동 확인하기

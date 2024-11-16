@@ -34,7 +34,7 @@
 
 //          3) MySQL 로그인
 `               mysql -u root -p
-                임시 비밀번호 붙여넣기(마우스 우클릭
+                임시 비밀번호 붙여넣기(마우스 우클릭)
 `
 //          4) 비밀번호 수정
 `               ALTER USER 'root'@'localhost' IDENTIFIED BY '새로운 비밀번호';
@@ -81,7 +81,7 @@
 //          DBeaver는 설치 드라이브 선택 가능해서 installer 다운받아 설치하면 됨
 
 //          1) DBeaver 설치 파일 다운로드
-//              dbeaver.io/ 접속
+//              https://dbeaver.io 접속
 //              -> DBeaver Community 다운로드 버튼 클릭
 //              -> Windows (installer) 다운로드
 
