@@ -131,8 +131,8 @@
                 name: string;
 `//             unique: 중복된 값의 생성을 방지해줌
 
-//          2) productSaleslocatioin
-//              ProductSaleslocatioin 클래스
+//          2) productSaleslocation
+//              ProductSaleslocation 클래스
 
 //              id: string
 //              address: string
@@ -255,7 +255,7 @@
 //          방법 1) entities 배열에 직접 추가
 
 //              TypeOrmModule 의 entities 에 전부 넣어야 하는데 시간 오래 걸림
-`               entities: [Board, Product, ProcudtCategory, ... ],
+`               entities: [Board, Product, ProductCategory, ... ],
 `
 //          방법 2) 모든 폴더를 순회하며 entity 파일 찾아 알아서 추가
 
