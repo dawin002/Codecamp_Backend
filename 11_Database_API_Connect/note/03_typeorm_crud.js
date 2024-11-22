@@ -93,10 +93,10 @@
 //              export 로 클래스 내보내기
 
 
-//      4. 게시글 등록 API 요청 받기
+//      4. 상품 등록 API 요청 받기
 
 //          product.resolver.ts 에 api 함수 createProduct() 작성
-//          게시글 등록 API 요청 받아 등록 함수로 넘겨주기
+//          상품 등록 API 요청 받아 등록 함수로 넘겨주기
 
 //          1) ProductsResolver 에 createProduct() 선언
 
@@ -163,7 +163,7 @@
 `//             인자의 타입스크립트로 사용할 IProductsSeviceCreate 타입 인터페이스로 선언
 
 
-//      6. 게시글 DB 등록 하기
+//      6. 상품 DB 등록 하기
 
 //          1) ProductsService 에 함수 create() 선언
 
@@ -174,7 +174,7 @@
 `//             createProductInput 를 인자로 받음
 //              인자는 IProductsSeviceCreate 타입임을 명시
 
-//          3) 레파지토리로 DB에 게시글 저장
+//          3) 레파지토리로 DB에 상품 저장
 `               create({ createProductInput }: IProductsSeviceCreate) {
                   const result = this.productsRepository.save({
                     ...createProductInput,
@@ -239,7 +239,7 @@
 //              ProductsResolver 의 API 함수에서 브라우저로 응답을 보내는 상황
 
 //              1) 등록된 내용이 담긴 객체를 그대로 브라우저에 돌려보내주기
-`                   return this.productsService.create({ createProdcutInput });
+`                   return this.productsService.create({ createProductInput });
 `
 //              2) 결과 메시지만 간단히 보내주기
 `                   return '정상적으로 상품이 등록되었습니다.';
@@ -309,12 +309,12 @@
 `//             ProductsModule 추가하고 import 하기
 
 
-//      10. 게시글 조회 API 작성
+//      10. 상품 조회 API 작성
 
 //          ProductsResolver 클래스에 조회 API 함수 작성
 //          products.resolver.ts
 
-//          1) 게시글 목록 조회 API 함수
+//          1) 상품 목록 조회 API 함수
 `               @Query(() => [Product])
                 fetchProducts(): Promise<Product[]> {
                   return this.productsService.findAll();
@@ -322,7 +322,7 @@
 `//             서비스 함수 findAll() 호출
 //              Promise 객체로 Product 객체 배열 반환
 
-//          2) 게시글 상세 조회 API 함수
+//          2) 상품 상세 조회 API 함수
 `               @Query(() => Product)
                 fetchProduct(
                   @Args('productId') productId: string, //
@@ -333,18 +333,18 @@
 //              Promise 객체로 Product 객체 반환
 
 
-//      11. 게시글 조회 서비스 함수 작성
+//      11. 상품 조회 서비스 함수 작성
 
 //          ProductsService 클래스에 DB에서 조회하는 함수 작성
 //          products.service.ts
 
-//          1) 게시글 목록 조회 서비스 함수
+//          1) 상품 목록 조회 서비스 함수
 `               findAll(): Promise<Product[]> {
                   return this.productsRepository.find();
                 }
 `//             Product 레파지토리의 find() 기능 사용해 DB의 모든 Product 배열 구해서 반환
 
-//          2) 게시글 상세 조회 서비스 함수
+//          2) 상품 상세 조회 서비스 함수
 `               findOne({ productId }: IProductsServiceFindOne): Promise<Product> {
                   return this.productsRepository.findOne({ where: { id: productId } });
                 }
@@ -357,7 +357,7 @@
 //              id(필드)가 productId(인자)와 일치하는 레코드를 where 을 통해 검색해 반환
 
 
-//      12. 게시글 조회 함수 인자 타입 정의
+//      12. 상품 조회 함수 인자 타입 정의
 
 //          ProductsService의 findOne() 함수는 인자를 받는데 인자의 타입을
 //           타입스크립트로 명시해 줘야함.
@@ -380,8 +380,8 @@
 
 //          1) 로컬 데이터베이스 켜져 있는 상태인지 확인
 //              안켜져있으면 켜기
-`               net start mysql`
-
+`               net start mysql
+`
 //          2) NestJS 서버 실행
 `               yarn start:dev
 `
@@ -391,7 +391,7 @@
 //          1) Playground 접속
 `               http://localhost:3000/graphql
 `
-//          2) 게시글 등록
+//          2) 상품 등록
 
 `               mutation {
                   createProduct(createProductInput:{
@@ -425,7 +425,7 @@
 //              id 는 자동 생성된 uuid가 반환됨
 //              isSoldout 은 설정한 대로 디폴트 값으로 false 초기화
 
-//          3) 게시글 목록 조회
+//          3) 상품 목록 조회
 
 `               query {
                   fetchProducts {
@@ -455,7 +455,7 @@
 `//             DB에 저장된 Products가 모두 조회됨
 //              너무 많아서 ... 로 생략
 
-//          4) 게시글 상세 조회
+//          4) 상품 상세 조회
 
 `               query {
                   fetchProduct(productId: "24213af8-4f71-4abb-906c-0c3743b8a7d0") {
