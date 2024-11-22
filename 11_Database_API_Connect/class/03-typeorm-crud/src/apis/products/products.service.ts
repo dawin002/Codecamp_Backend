@@ -4,7 +4,7 @@ import { Product } from './entities/product.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import {
   IProductsServiceFindOne,
-  IProductsSeviceCreate,
+  IProductsServiceCreate,
 } from './interfaces/products-service.interface';
 
 @Injectable()
@@ -22,7 +22,7 @@ export class ProductsService {
     return this.productsRepository.findOne({ where: { id: productId } });
   }
 
-  create({ createProductInput }: IProductsSeviceCreate): Promise<Product> {
+  create({ createProductInput }: IProductsServiceCreate): Promise<Product> {
     const result = this.productsRepository.save({
       // 스프레드 연산자 사용하는 방식
       ...createProductInput,

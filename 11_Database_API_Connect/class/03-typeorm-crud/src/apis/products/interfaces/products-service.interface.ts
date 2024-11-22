@@ -1,6 +1,6 @@
 import { CreateProductInput } from '../dto/create-product.input';
 
-export interface IProductsSeviceCreate {
+export interface IProductsServiceCreate {
   createProductInput: CreateProductInput;
 }
 
