@@ -7,7 +7,7 @@ import {
   IProductsServiceDelete,
   IProductsServiceFindOne,
   IProductsServiceUpdate,
-  IProductsSeviceCreate,
+  IProductsServiceCreate,
 } from './interfaces/products-service.interface';
 import { ProductsSaleslocationsService } from '../productsSaleslocations/productsSaleslocations.service';
 
@@ -35,7 +35,7 @@ export class ProductsService {
 
   async create({
     createProductInput,
-  }: IProductsSeviceCreate): Promise<Product> {
+  }: IProductsServiceCreate): Promise<Product> {
     // 1. 상품 하나만 등록할 때 사용하는 방법
     // const result = this.productsRepository.save({
     //   ...createProductInput,

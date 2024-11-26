@@ -61,7 +61,7 @@
 //          상품 등록 서비스 함수 create() 수정
 
 //          1) 상품과 상품판매위치 인자로 받아 분리하기
-`               create({ createProductInput }: IProductsSeviceCreate): Promise<Product> {
+`               create({ createProductInput }: IProductsServiceCreate): Promise<Product> {
                   const { productSaleslocation, ...product } = createProductInput;
                 }
 `//             rest 파라미터 사용해 인자로 받은 createProductInput DTO 객체를
@@ -146,7 +146,7 @@
 
 //          따라서 관련 코드를 ProductsSaleslocationsService 클래스로 분리
 
-//          1) porductsSaleslocations.service.ts 파일 생성
+//          1) productsSaleslocations.service.ts 파일 생성
 //              src/apis/productsSaleslocations 폴더에 생성
 
 //          2) ProductsSaleslocationsService 클래스 선언
@@ -225,7 +225,7 @@
 
 //      1. 상품 목록 조회 서비스 함수 수정
 
-//          1) ProdcutService 의 findAll() 함수 수정
+//          1) ProductService 의 findAll() 함수 수정
 `               findAll(): Promise<Product[]> {
                   return this.productsRepository.find({
                     relations: ['productSaleslocation'],
@@ -236,7 +236,7 @@
 
 //      2. 상품 상세 조회 서비스 함수 수정
 
-//          1) ProdcutService 의 findOne() 함수 수정
+//          1) ProductService 의 findOne() 함수 수정
 `               findOne({ productId }: IProductsServiceFindOne): Promise<Product> {
                   return this.productsRepository.findOne({
                     where: { id: productId },
