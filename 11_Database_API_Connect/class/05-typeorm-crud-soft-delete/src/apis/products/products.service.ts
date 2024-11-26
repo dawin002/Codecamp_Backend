@@ -70,6 +70,7 @@ export class ProductsService {
 
     // 5. 소프트 삭제(TypeORM 제공) - softDelete
     const result = await this.productsRepository.softDelete({ id: productId });
+    
     return result.affected ? true : false;
   }
 }
