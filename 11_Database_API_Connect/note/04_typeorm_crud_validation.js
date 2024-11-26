@@ -124,12 +124,12 @@
 //          2) 상품 수정 API 인자 받아서 전달
 `               updateProduct(
                   @Args('productId') productId: string, //
-                  @Args('updateProdcutInput') updateProductInput: UpdateProductInput,
+                  @Args('updateProductInput') updateProductInput: UpdateProductInput,
                 ) {
                   this.productsService.update({ productId, updateProductInput });
                 }
 `//             updateProductInput : 수정할 상품 내용 담을 DTO
-//              productsService.update : 상품 서비스의 upadate 함수로 전달
+//              productsService.update : 상품 서비스의 update 함수로 전달
 
 //      5. 상품 수정 서비스 함수 추가
 
@@ -140,7 +140,7 @@
                 }
 `
 //          2) 함수 인자 타입 인터페이스 선언
-//              products/interfaces/update-prodcut.input.ts 에 선언
+//              products/interfaces/update-product.input.ts 에 선언
 `               export interface IProductsServiceUpdate {
                   productId: string;
                   updateProductInput: UpdateProductInput;
@@ -337,7 +337,7 @@
                 export class HttpExceptionFilter implements ExceptionFilter {
 
                 }
-`//             HttpExceptioin 이 발생하면 catch 문으로 이 클래스의 catch 함수를 
+`//             HttpException 이 발생하면 catch 문으로 이 클래스의 catch 함수를 
 //               실행시켜줘야 한다고 NestJS 에 지정하는 것
 
 //          3) catch 함수 구현
@@ -374,7 +374,7 @@
 `               mutation {
                   updateProduct(
                     productId: "94319f70-ffbd-11ee-89f4-c87f545065bb", 
-                    updateProdcutInput: {
+                    updateProductInput: {
                       price: 5000,
                       description: "나는 짱좋은 마우스"
                     }
@@ -408,7 +408,7 @@
 `               mutation {
                   updateProduct(
                     productId: "94319f70-ffbd-11ee-89f4-c87f545065bb", 
-                    updateProdcutInput: {
+                    updateProductInput: {
                       price: -100,
                     }
                   ) {
