@@ -118,7 +118,7 @@
 //              newTags.identifiers : 이 상품의 태그중 새로운 태그id 배열
 //              두 배열을 스프레드 해서 tags 배열에 저장
 
-//          7) DB에 상품 저장하며 태가id 넣어주기
+//          7) DB에 상품 저장하며 태그id 넣어주기
 `               async create({ ~~~ }: ~~~ ): ~~~ {
                   ~~~
                   const tags = ~~~;
@@ -134,7 +134,7 @@
 //      4. 상품 태그 서비스 클래스로 코드 분리하기
 
 //          productsTagsRepository를 사용하는 함수는 ProductsService 클래스가 아니라
-//           PorductsTagsService 에 있어야 함 (insert, find)
+//           ProductsTagsService 에 있어야 함 (insert, find)
 
 //          productsTagsRepository 에서 태그에 대한 검증 로직이 존재할 수도 있다면
 //           서비스 함수로 선언하고 import해서 사용해야 하기 때문
