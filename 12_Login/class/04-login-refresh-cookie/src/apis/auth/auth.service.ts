@@ -62,7 +62,10 @@ export class AuthService {
     console.log('setRefreshToken function finished');
 
     // 배포 환경
-    // context.res.setHeader('set-Cookie', `refreshToken=${refreshToken}; path=/; domain=.mybacksite.com; SameSite=None; Secure; httpOnly;`);
+    // context.res.setHeader(
+    //   'set-Cookie', 
+    //   `refreshToken=${refreshToken}; path=/; domain=.mybacksite.com; SameSite=None; Secure; httpOnly;`
+    // );
     // context.res.setHeader('Access-Control-Allow-Origin'. 'https://myfrontsite.com') // 이 주소에서만 리프레시 토큰 전달 가능하게 하기
   }
 }
