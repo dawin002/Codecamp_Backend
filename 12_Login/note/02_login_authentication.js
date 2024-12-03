@@ -156,7 +156,7 @@
                 })
                 export class AuthModule {}
 `//             imports 에 TypeOrmModule 과 User 의존성을 주입해야
-//              UsersService의 함수가 UsersRepository를 사용할 수 있음
+//              주입된 UsersService의 함수가 UsersRepository를 사용할 수 있음
 
 
 //      4. User 관련 의존성 한번에 주입하기
@@ -248,7 +248,7 @@
 `//             @nestjs/jwt : 인증 관련 JWT 라이브러리
 //              passport-jwt : 인가 관련 JWT 라이브러리
 
-//          2) TypeScript용 JWT 라이브러리를 Dev-Dependency에 추가
+//          2) TypeScript용 JWT 인가 라이브러리를 Dev-Dependency에 추가
 `               yarn add --dev @types/passport-jwt
 `
 //          3) AuthModule에서 JWT 모듈 임포트
@@ -276,7 +276,7 @@
 //          5) AuthService에 accessToken 생성 함수 선언
 `               getAccessToken({ user }: IUsersServiceGetAccessToken): string {
                   return this.jwtService.sign(
-                    { sub: user.id },                            // 1번 파라미터
+                    { sub: user.id },                          // 1번 파라미터
                     { secret: '나의비밀번호', expiresIn: '1h' },  // 2번 파라미터
                   );
                 }
@@ -293,6 +293,7 @@
                 }
 `
 //          7) accessToken 생성 후 반환
+//              AuthService.login() 서비스 함수
 `               async login({ ~~~ }: ~~~): Promise<string> {
                   const user = ~~~.findOneByEmail(~~~);
                   ~~~
@@ -302,8 +303,10 @@
                 }
 `//             accessToken은 문자열을 반환하는데 비동기 처리이기 때문에
 //              함수 반환값 타입스크립트 Promise<string> 명시
+//              await는 getAccessToken() 함수 위쪽에서 사용됨
 
 //          8) accessToken 브라우저로 응답
+//              AuthModule.login() API 함수
 `               @Mutation(() => String)
                 login(
                   @Args(~~~) ~~~: ~~~,
