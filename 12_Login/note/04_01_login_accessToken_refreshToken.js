@@ -34,7 +34,7 @@
 //             인가 요청을 보낼 때마다 요청 헤더에 토큰을 담아서 전달
 
 //          로그인을 위해 만들어지는 JWT 토큰 
-//          => AccessToekn
+//          => AccessToken
 
 //      RefreshToken
 
