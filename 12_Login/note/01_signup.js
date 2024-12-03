@@ -142,7 +142,7 @@
                   ],
                 })
                 export class UsersModule {}
-`//             inports 에서 TypeOrmModule 의존성 주입, User 엔티티 사용 설정
+`//             imports 에서 TypeOrmModule 의존성 주입, User 엔티티 사용 설정
 
 //          2) UsersService 클래스에 User Repository 의존성 주입
 `               constructor(
@@ -182,7 +182,7 @@
                 }
 `
 //          ** GraphQL API 응답으로 User 객체를 반환하려면
-//              User 클래스에 GraphQL 타입 데코레이터가 적용되어 있어야함
+//              User 엔티티 클래스에 GraphQL 타입 데코레이터가 적용되어 있어야함
 `               @Entity()
                 @ObjectType()           <== GraphQL 클래스 타입 데코레이터
                 export class User {
@@ -288,7 +288,7 @@
                 }
 `//             이메일로 회원조회 함수의 반환 값을 user 에 저장
 //              이메일이 똑같은 회원이 있다면 user에 회원 객체가 담겨 예외 발생시킴
-//              반환값이 DB에서 완전히 넘어와야 되기 때문에 findOneByEmail 비동기 처리
+//              반환값이 DB에서 완전히 넘어와야 되기 때문에 findOneByEmail 함수 비동기 처리
 
 //      2. 비밀번호 암호화 (Hash)
 
@@ -298,6 +298,8 @@
 //          2) 타입스크립트용 bcrypt 설치
 `               yarn add --dev @types/bcrypt
 `//             TypeScript이기 때문에 DevDependency에 넣기 위해 --dev 옵션 추가
+
+//          이 아래는 UsersService 클래스
 
 //          3) bcrypt 라이브러리 임포트
 `               import * as bcrypt from 'bcrypt';
