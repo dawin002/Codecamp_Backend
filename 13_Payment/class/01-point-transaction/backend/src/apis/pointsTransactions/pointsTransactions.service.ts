@@ -23,6 +23,11 @@ export class PointsTransactionsService {
     amount,
     user: _user, // user 매개변수의 이름을 _user 로 바꿔 사용
   }: IPointsTransactionsServiceCreate): Promise<PointTransaction> {
+
+    // this.pointsTransactionsRepository.create(); // 등록을 위한 빈 객체 만들기
+    // this.pointsTransactionsRepository.insert(); // 결과는 못 받는 등록 방법
+    // this.pointsTransactionsRepository.update(); // 결과는 못 받는 수정 방법
+
     // 1. PointTransaction 테이블에 거래기록 1줄 생성
 
     // 객체를 만들어 나중에 저장하고 싶을 때 (create: 등록을 위한 빈 객체 만들기)
