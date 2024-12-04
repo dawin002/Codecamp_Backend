@@ -89,4 +89,4 @@
 
 //      4단계 구현 실습은 강의자료 참고
 
-//          PointTransactionService의 create() 함수에 락 걸어주기
+//          PointTransactionService의 create() 서비스 함수에 락 걸어주기
