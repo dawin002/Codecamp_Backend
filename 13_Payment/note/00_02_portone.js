@@ -55,7 +55,7 @@
 
 //          백엔드 서버에 API 하나를 만들고 웹훅 주소로 작성해두면
 //          무통장입금 결제나 결제 취소가 오면 백엔드 서버의 API로 정보를 보내줌
-//          => 웹훅을 받는 API 주소를 Webhook URL 또는 Webhook Notifiacation
+//          => 웹훅을 받는 API 주소를 Webhook URL 또는 Webhook Notification
 
 //          다음 상황들에서 웹훅 호출
 //          결제 승인, 가상계좌 발급, 가상계좌 입금, 예약결제 시도, 관리자 콘솔에서 결제 취소
