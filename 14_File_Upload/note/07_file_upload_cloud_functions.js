@@ -49,6 +49,6 @@
 
 //          썸네일 트리거 구현
 
-//              실제로 하진 않고 npmjs.com 에 thumnail image resize 이런거 검색해서
+//              실제로 하진 않고 npmjs.com 에 thumbnail image resize 이런거 검색해서
 //               GCP Cloud Functions 의 package.json 에서 패키지 다운받은 뒤
-//               트리거 함수로 구현한 뒤 사용하면 된다고 말함
+//               트리거 함수로 구현한 뒤 사용하면 된다고만 말함
