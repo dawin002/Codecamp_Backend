@@ -121,7 +121,7 @@
 `
 
 //          난 괜찮은데 버전 문제 때문에 GraphQL 요청에서 에러 발생하는 경우
-//              main.ts 에서 다음 코드에서 사용되는 ValidatioinPipe 라이브러리 버전 낮추기
+//              main.ts 에서 다음 코드에서 사용되는 ValidationPipe 라이브러리 버전 낮추기
 `               app.useGlobalPipes(new ValidationPipe());
 `
 //              package.json 의 "dependencies" 의 "class-validator" 라이브러리 버전 낮추기
@@ -139,7 +139,7 @@
 //              ttl qqq => 등록한 게시글의 ttl 출력됨 (5000, 1초에 1씩 감소)
 
 //              ttl 은 기본값으로 5000 으로 들어가있는데
-//              BoradsResolver 에서 cacheManager.set('qqq', ~~~, 0) 으로 설정한 경우
+//              BoardsResolver 에서 cacheManager.set('qqq', ~~~, 0) 으로 설정한 경우
 //              ttl이 기본값 5000 초로 저장되는 것을 알 수 있음
 
 //            * 근데 ttl 어떻게 바꾸는지 잘 모르겠음
