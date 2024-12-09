@@ -16,8 +16,8 @@ export class AppController {
   login() {
     // auth-service로 트래픽 넘겨줌
     return this.clientAuthService.send(
-      { cmd: 'login' },
-      { email: 'a@a.com', password: '1234' },
+      { cmd: 'login' }, // 첫 번째 인자: 트래픽을 받을 함수의 설정된 메세지 패턴
+      { email: 'a@a.com', password: '1234' }, // 두 번째 인자: 트래픽과 함께 전달될 api 바디 인자
     );
   }
 

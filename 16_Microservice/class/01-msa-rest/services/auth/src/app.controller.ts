@@ -6,7 +6,7 @@ import { MessagePattern } from '@nestjs/microservices';
 export class AppController {
   // constructor(private readonly appService) {}
 
-  @MessagePattern({ cmd: 'login' })
+  @MessagePattern({ cmd: 'login' }) // cmd: 'login' : api-gateway 컨트롤러에서 이 함수를 찾기 위한 메세지 패턴
   login(data) {
     // 로그인 진행
     console.log(data);
