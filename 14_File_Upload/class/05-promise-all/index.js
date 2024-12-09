@@ -29,7 +29,7 @@ fetchData1();
 const fetchData2 = async () => {
     console.time("=== 한방 Promise.all === ");
 
-    // Promise.all() 앞에 awiat 붙이기, 전체를 동시에 기다릴 거여서
+    // Promise.all() 앞에 await 붙이기, 전체를 동시에 기다릴 거여서
     const results = await Promise.all([
         // new Promise 앞에는 await 안붙음
         new Promise((resolve, reject) => {
