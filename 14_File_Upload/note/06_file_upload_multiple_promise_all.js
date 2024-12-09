@@ -7,7 +7,7 @@
 
 //          실습은 강의자료 보고 진행하기
 
-//          Promise.all 로 전환하기
+//          Promise.all 로 전환하기 코드 리펙토링 과정
 `               await Promise.all(
                   waitedFiles.map((el) => {
                     return new Promise((resolve, reject) => {
