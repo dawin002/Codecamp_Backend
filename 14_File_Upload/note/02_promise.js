@@ -50,6 +50,7 @@
 //              file.createReadStream()~~~ 끝에 .then() 을 붙여 해결할 수 있지만
 //              .then() 또한 마찬가지로 Promise 기능을 지원하는 함수 앞에만 붙일 수 있음
 
+//          해결 방법!!
 //          => file.createReadStream().~~~ 함수를 Promise 형태로 바꿔줘야 함
 
 
