@@ -3,7 +3,7 @@
 //      강의자료에 없는 부분만 필기
 
 
-//      마이크로서비스 특징
+//      마이크로서비스 아키텍처 특징
 
 //          MSA ( Microservice Architecture )
 
@@ -15,9 +15,9 @@
 
 //          각 서비스를 다른 언어로 구현 가능
 
-//      <=> 모놀리틱서비스
+//      <=> 모놀리식 아키텍처
 
-//          Monolithicservice
+//          Monolithic Architecture
 
 //          한 NestJS 폴더에 모든 서비스를 구현하는 것
 
