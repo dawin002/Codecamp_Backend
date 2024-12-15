@@ -44,7 +44,7 @@
 //              IPv6 주소체계 사용하는 레코드
 
 //          CNAME 레코드
-//              Canonicla Name 레코드
+//              Canonical Name 레코드
 //              표준 이름 레코드
 //              sub 도메인에 www 넣어서 www.asdf.com 으로 접속하면 asdf.com 으로 연결해줌
 //              레코드 만들기에서 아래에 IP 주소 대신 표준 이름 asdf.com (도메인 주소) 지정해주면됨
