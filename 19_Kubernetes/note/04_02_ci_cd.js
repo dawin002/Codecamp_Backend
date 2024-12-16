@@ -2,7 +2,7 @@
 
 //      CI/CD 란?
 
-//          Continuous Integratioin / Continuous Deployment
+//          Continuous Integration / Continuous Deployment
 //          지속적으로 통합해서 / 지속적으로 배포한다
 
 //          개발 단계부터 배포까지 자동화하는 것
@@ -49,10 +49,9 @@
 //              GCP-Cloudbuild 컴퓨터에서 Github에 로그인과 사전 설정을 해둠
 
 //          시작 트리거
-//              vscode에서 업데이트된 소스를 Github에 push 하면 
+//              vscode에서 업데이트된 소스를 Github에 push 하면
 //               GCP-Cloudbuild 컴퓨터에서 Github에 있는 파일을 가져와 CI/CD 시작
 
 //          1. 테스트 코드를 실행 => 지속적 통합
 //          2. 컨테이너 레지스트리 업로드 => 지속적 제공
 //          3. 쿠버네티스에 배포 => 지속적 배포
-
