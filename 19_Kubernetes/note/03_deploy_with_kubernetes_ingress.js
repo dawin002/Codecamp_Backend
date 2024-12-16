@@ -60,7 +60,7 @@
 //      2. HTTP 의 / API 만들기
 
 //          여기서 backend/src/apis 내에 새로운 api 폴더를 생성하는 것이 아니라
-//          그냥 src 안에 app/controller.ts 파일 만들어 api 작성하는데
+//          그냥 src 안에 app.controller.ts 파일 만들어 api 작성하는데
 
 //          기능이 있는 api를 만드는 것이 아니기 때문에 src 안에 app.module.ts와
-//          같은 레벨에 app/controller.ts를 만들어 api 작성하는 것
+//          같은 레벨에 app.controller.ts를 만들어 api 작성하는 것
