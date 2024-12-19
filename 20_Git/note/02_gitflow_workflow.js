@@ -31,29 +31,29 @@
 
 //      브랜치 종류 요약
 
-//          master barnch 
+//          master branch 
 //              배포할 브랜치
 
 //          develop barnch
 //              통합 개발 브랜치
-//              master barnch의 하위 브랜치
+//              master branch의 하위 브랜치
 //              이 브랜치에서 바로 개발을 하는건 아님
 
 //          feature branches
 //              기능을 개발을 위한 브랜치
-//              develop barnch의 하위 브랜치
+//              develop branch의 하위 브랜치
 //              피쳐 브랜치의 이름은 feature-fetchBoard 처럼 지음
 
 //          release branches
 //              릴리즈 하기 위한 브랜치
 //              릴리즈 전 테스트 및 버그 픽스 작업만 함
 //              릴리즈 준비 끝나면 master branch로 병합되어 배포됨
-//              버그 픽스 때문에 기능 개발이 필요하다면 다시 develop barnch로 내려가기도 함
+//              버그 픽스 때문에 기능 개발이 필요하다면 다시 develop branch로 내려가기도 함
 
 //          hotfixes branch
 //              급한 버그를 픽스하는 브랜치
 //              배포후 발생한 버그를 핫픽스하는 작업만 수행
-//              핫픽스후 바로 master barnch로 병합
+//              핫픽스후 바로 master branch로 병합
 //              master branch의 하위 브랜치
 
 
